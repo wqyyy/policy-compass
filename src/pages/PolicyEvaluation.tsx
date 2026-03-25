@@ -51,7 +51,7 @@ const insights = [
 
 const recentPolicies = ["北京经开区产业发展促进办法", "科技创新企业扶持专项", "中小企业融资支持政策"];
 
-const flowSteps = ["选择政策", "配置任务", "智能分析", "编辑润色", "导出报告"];
+const flowSteps = ["选择政策", "智能分析", "编辑润色", "导出报告"];
 
 const statusMap: Record<string, { label: string; class: string }> = {
   completed: { label: "已完成", class: "bg-gov-green/10 text-gov-green border-gov-green/20" },
