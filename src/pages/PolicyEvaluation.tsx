@@ -69,7 +69,7 @@ const PolicyEvaluation = () => {
       <div>
         <h1 className="text-2xl font-bold text-foreground">政策评估工作台</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          围绕单篇已发布政策，提供多维分析、智能诊断与报告生成能力
+          针对发布政策，提供多维分析、智能诊断与报告生成能力
         </p>
       </div>
 
