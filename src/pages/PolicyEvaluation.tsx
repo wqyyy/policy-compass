@@ -37,6 +37,7 @@ const recentTasks = [
 
 const PolicyEvaluation = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div className="p-6 space-y-6">
