@@ -39,45 +39,59 @@ const PolicyEvaluation = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-foreground">政策评估工作台</h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          针对发布政策，提供多维分析、智能诊断与报告生成能力
-        </p>
-      </div>
-
-      {/* 使用流程 */}
-      <Card className="p-6">
-        <h3 className="text-base font-semibold text-foreground mb-6">使用流程</h3>
-        <div className="flex items-center justify-start gap-4">
-          {flowSteps.map((step, i) => (
-            <div key={step} className="flex items-center gap-4">
-              <div className="flex items-center gap-3">
-                <div className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold ${
-                  i === 0
-                    ? "bg-primary text-primary-foreground"
-                    : "border-2 border-muted-foreground/30 text-muted-foreground"
-                }`}>
-                  {i + 1}
-                </div>
-                <span className="text-sm text-foreground font-medium">{step}</span>
-              </div>
-              {i < flowSteps.length - 1 && <ArrowRight className="w-5 h-5 text-muted-foreground/50" />}
-            </div>
-          ))}
-        </div>
-      </Card>
-
-      {/* 已评估政策数 - 红色渐变卡片 */}
-      <div className="rounded-xl p-6 bg-gradient-to-r from-red-50 via-red-50/50 to-transparent border">
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center shrink-0">
-            <FileText className="w-7 h-7 text-primary-foreground" />
-          </div>
+      {/* Header + Flow + Stats in one row */}
+      <div className="flex gap-6 items-stretch">
+        {/* Left: Header + Flow */}
+        <div className="flex-1 space-y-4">
           <div>
-            <p className="text-3xl font-bold text-foreground">28</p>
-            <p className="text-sm text-muted-foreground">已评估政策数</p>
+            <h1 className="text-2xl font-bold text-foreground">政策评估工作台</h1>
+            <p className="text-sm text-muted-foreground mt-1">
+              基于AI驱动的深度政策洞察，协助政府及研究机构构建科学、多元的政策评估框架。
+            </p>
+          </div>
+
+          {/* 使用流程 */}
+          <div className="bg-muted/50 rounded-xl p-5">
+            <div className="flex items-center gap-0">
+              {flowSteps.map((step, i) => (
+                <div key={step} className="flex-1 flex flex-col items-center relative">
+                  <div className="flex items-center w-full">
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold z-10 ${
+                      i === 0
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-background border border-border text-muted-foreground"
+                    }`}>
+                      {i + 1}
+                    </div>
+                    {i < flowSteps.length - 1 && (
+                      <div className="flex-1 h-[2px] bg-border" />
+                    )}
+                  </div>
+                  <span className={`text-xs mt-2 ${i === 0 ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
+                    {step}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Stats Card */}
+        <div className="w-72 shrink-0 rounded-xl bg-primary text-primary-foreground p-6 flex flex-col justify-between">
+          <div>
+            <p className="text-xs font-semibold tracking-widest opacity-80 mb-2">TOTAL INSIGHTS</p>
+            <div className="flex items-baseline gap-1">
+              <span className="text-4xl font-bold">28</span>
+              <span className="text-lg opacity-80">份</span>
+            </div>
+            <p className="text-sm mt-1 opacity-90">已评估政策数</p>
+          </div>
+          <div className="flex items-center justify-between mt-4 pt-3 border-t border-primary-foreground/20">
+            <span className="text-xs opacity-80">本月新增: +5</span>
+            <div className="flex items-center gap-1 text-xs opacity-80">
+              <TrendingUp className="w-3.5 h-3.5" />
+              12%
+            </div>
           </div>
         </div>
       </div>
