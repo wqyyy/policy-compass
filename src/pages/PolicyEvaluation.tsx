@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Search,
   FileText,
@@ -36,6 +37,7 @@ const recentTasks = [
 
 const PolicyEvaluation = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div className="p-6 space-y-6">
@@ -113,7 +115,7 @@ const PolicyEvaluation = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6">开始评估</Button>
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6" onClick={() => navigate("/policy-analysis")}>开始评估</Button>
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="text-muted-foreground">最近查看：</span>

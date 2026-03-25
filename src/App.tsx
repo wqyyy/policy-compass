@@ -11,6 +11,7 @@ import EffectDashboard from "./pages/EffectDashboard";
 import EnterpriseEvaluation from "./pages/EnterpriseEvaluation";
 import EnterpriseEvaluationDetail from "./pages/EnterpriseEvaluationDetail";
 import PolicyEvaluation from "./pages/PolicyEvaluation";
+import PolicyAnalysis from "./pages/PolicyAnalysis";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/enterprise-evaluation" element={<EnterpriseEvaluation />} />
             <Route path="/enterprise-evaluation/:id" element={<EnterpriseEvaluationDetail />} />
             <Route path="/policy-evaluation" element={<PolicyEvaluation />} />
+            <Route path="/policy-analysis" element={<PolicyAnalysis />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
