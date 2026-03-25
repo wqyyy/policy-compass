@@ -3,8 +3,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import { AppLayout } from "@/components/AppLayout";
+import Index from "./pages/Index";
+import PolicyReport from "./pages/PolicyReport";
+import PolicyReportDetail from "./pages/PolicyReportDetail";
+import EffectDashboard from "./pages/EffectDashboard";
+import EnterpriseEvaluation from "./pages/EnterpriseEvaluation";
+import EnterpriseEvaluationDetail from "./pages/EnterpriseEvaluationDetail";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -15,8 +21,14 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<Index />} />
+            <Route path="/policy-report" element={<PolicyReport />} />
+            <Route path="/policy-report/:id" element={<PolicyReportDetail />} />
+            <Route path="/effect-dashboard" element={<EffectDashboard />} />
+            <Route path="/enterprise-evaluation" element={<EnterpriseEvaluation />} />
+            <Route path="/enterprise-evaluation/:id" element={<EnterpriseEvaluationDetail />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
