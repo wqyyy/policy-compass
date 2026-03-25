@@ -44,9 +44,9 @@ const PolicyEvaluation = () => {
         {/* Left: Header + Flow */}
         <div className="flex-1 space-y-4">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">政策评估工作台</h1>
+            <h1 className="text-2xl font-bold text-foreground">政策评价</h1>
             <p className="text-sm text-muted-foreground mt-1">
-              基于AI驱动的深度政策洞察，协助政府及研究机构构建科学、多元的政策评估框架。
+              针对发布政策，提供多维分析、智能诊断与报告生成能力
             </p>
           </div>
 
