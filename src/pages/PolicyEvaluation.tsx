@@ -24,10 +24,6 @@ import { Badge } from "@/components/ui/badge";
 
 const stats = [
   { label: "已评估政策数", value: 28, icon: FileCheck, color: "text-primary" },
-  { label: "进行中任务", value: 5, icon: Clock, color: "text-gov-orange" },
-  { label: "待编辑报告", value: 3, icon: FileEdit, color: "text-gov-blue" },
-  { label: "已完成报告", value: 20, icon: CheckCircle2, color: "text-gov-green" },
-  { label: "问题政策数", value: 4, icon: AlertTriangle, color: "text-destructive" },
 ];
 
 const dimensions = [
@@ -55,7 +51,7 @@ const insights = [
 
 const recentPolicies = ["北京经开区产业发展促进办法", "科技创新企业扶持专项", "中小企业融资支持政策"];
 
-const flowSteps = ["选择政策", "配置任务", "智能分析", "编辑润色", "导出报告"];
+const flowSteps = ["选择政策", "智能分析", "编辑润色", "导出报告"];
 
 const statusMap: Record<string, { label: string; class: string }> = {
   completed: { label: "已完成", class: "bg-gov-green/10 text-gov-green border-gov-green/20" },
@@ -73,16 +69,36 @@ const PolicyEvaluation = () => {
       <div>
         <h1 className="text-2xl font-bold text-foreground">政策评估工作台</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          围绕单篇已发布政策，提供多维分析、智能诊断与报告生成能力
+          针对发布政策，提供多维分析、智能诊断与报告生成能力
         </p>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+      {/* Flow - at top */}
+      <Card className="p-6">
+        <h3 className="text-sm font-semibold text-foreground mb-4">使用流程</h3>
+        <div className="flex items-center justify-center gap-2 flex-wrap">
+          {flowSteps.map((step, i) => (
+            <div key={step} className="flex items-center gap-2">
+              <div className="flex items-center gap-2 bg-muted rounded-lg px-4 py-2">
+                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                  i === flowSteps.length - 1 ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary"
+                }`}>
+                  {i + 1}
+                </div>
+                <span className="text-sm text-foreground">{step}</span>
+              </div>
+              {i < flowSteps.length - 1 && <ArrowRight className="w-4 h-4 text-muted-foreground" />}
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* Stats - only one */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((s) => (
           <Card key={s.label} className="gov-card-hover">
             <CardContent className="p-4 flex items-center gap-3">
-              <div className={`w-10 h-10 rounded-lg bg-muted flex items-center justify-center shrink-0`}>
+              <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center shrink-0">
                 <s.icon className={`w-5 h-5 ${s.color}`} />
               </div>
               <div>
@@ -143,46 +159,31 @@ const PolicyEvaluation = () => {
         </div>
       </div>
 
-      {/* Recent Tasks */}
-      <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-base">最近评估任务</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b text-muted-foreground">
-                  <th className="text-left py-2 font-medium">政策名称</th>
-                  <th className="text-left py-2 font-medium">状态</th>
-                  <th className="text-left py-2 font-medium">当前阶段</th>
-                  <th className="text-left py-2 font-medium">更新时间</th>
-                  <th className="text-right py-2 font-medium">操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                {recentTasks.map((t) => (
-                  <tr key={t.name} className="border-b last:border-0 hover:bg-muted/30">
-                    <td className="py-3 text-foreground">{t.name}</td>
-                    <td className="py-3">
-                      <Badge variant="outline" className={statusMap[t.status].class}>
-                        {statusMap[t.status].label}
-                      </Badge>
-                    </td>
-                    <td className="py-3 text-muted-foreground">{t.stage}</td>
-                    <td className="py-3 text-muted-foreground">{t.time}</td>
-                    <td className="py-3 text-right">
-                      <Button variant="ghost" size="sm" className="text-primary h-7 gap-1">
-                        <Eye className="w-3.5 h-3.5" /> 查看
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </CardContent>
-      </Card>
+      {/* Recent Tasks - Card Style */}
+      <div>
+        <h2 className="text-base font-semibold text-foreground mb-3">最近评估任务</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {recentTasks.map((t) => (
+            <Card key={t.name} className="gov-card-hover cursor-pointer group">
+              <CardContent className="p-4 space-y-3">
+                <div className="flex items-start justify-between">
+                  <p className="text-sm font-medium text-foreground line-clamp-2 flex-1">{t.name}</p>
+                  <Badge variant="outline" className={`${statusMap[t.status].class} shrink-0 ml-2`}>
+                    {statusMap[t.status].label}
+                  </Badge>
+                </div>
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                  <span>{t.stage}</span>
+                  <span>{t.time}</span>
+                </div>
+                <Button variant="ghost" size="sm" className="text-primary h-7 gap-1 w-full justify-center group-hover:bg-primary/5">
+                  <Eye className="w-3.5 h-3.5" /> 查看详情
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
 
       {/* AI Insights */}
       <Card>
@@ -215,26 +216,6 @@ const PolicyEvaluation = () => {
             </div>
           ))}
         </CardContent>
-      </Card>
-
-      {/* Flow */}
-      <Card className="p-6">
-        <h3 className="text-sm font-semibold text-foreground mb-4">使用流程</h3>
-        <div className="flex items-center justify-center gap-2 flex-wrap">
-          {flowSteps.map((step, i) => (
-            <div key={step} className="flex items-center gap-2">
-              <div className="flex items-center gap-2 bg-muted rounded-lg px-4 py-2">
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                  i === flowSteps.length - 1 ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary"
-                }`}>
-                  {i + 1}
-                </div>
-                <span className="text-sm text-foreground">{step}</span>
-              </div>
-              {i < flowSteps.length - 1 && <ArrowRight className="w-4 h-4 text-muted-foreground" />}
-            </div>
-          ))}
-        </div>
       </Card>
     </div>
   );
