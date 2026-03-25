@@ -1,4 +1,4 @@
-import { FileText, BarChart3, Award, Home, Bot } from "lucide-react";
+import { Home, Bot, ClipboardCheck } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
 import {
@@ -15,10 +15,8 @@ import {
 } from "@/components/ui/sidebar";
 
 const menuItems = [
-  { title: "总览首页", url: "/", icon: Home },
-  { title: "政策兑现专报", url: "/policy-report", icon: FileText },
-  { title: "兑现效果看板", url: "/effect-dashboard", icon: BarChart3 },
-  { title: "企业评优", url: "/enterprise-evaluation", icon: Award },
+  { title: "政策兑现", url: "/", icon: Home },
+  { title: "政策评价", url: "/policy-evaluation", icon: ClipboardCheck },
 ];
 
 export function AppSidebar() {
