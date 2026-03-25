@@ -24,10 +24,6 @@ import { Badge } from "@/components/ui/badge";
 
 const stats = [
   { label: "已评估政策数", value: 28, icon: FileCheck, color: "text-primary" },
-  { label: "进行中任务", value: 5, icon: Clock, color: "text-gov-orange" },
-  { label: "待编辑报告", value: 3, icon: FileEdit, color: "text-gov-blue" },
-  { label: "已完成报告", value: 20, icon: CheckCircle2, color: "text-gov-green" },
-  { label: "问题政策数", value: 4, icon: AlertTriangle, color: "text-destructive" },
 ];
 
 const dimensions = [
