@@ -113,7 +113,6 @@ const PolicyEvaluation = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-            <Button variant="outline" className="px-6">选择政策</Button>
             <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6">开始评估</Button>
           </div>
           <div className="flex items-center gap-2 text-sm">
