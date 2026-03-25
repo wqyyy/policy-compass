@@ -51,7 +51,8 @@ const PolicyEvaluation = () => {
           </div>
 
           {/* 使用流程 */}
-          <div className="bg-muted/50 rounded-xl p-5">
+          <div className="bg-background rounded-xl p-5 border border-border">
+            <h3 className="text-sm font-semibold text-foreground mb-3">工作流程</h3>
             <div className="flex items-center gap-0">
               {flowSteps.map((step, i) => (
                 <div key={step} className="flex-1 flex flex-col items-center relative">
