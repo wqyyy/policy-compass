@@ -100,31 +100,37 @@ const PolicyEvaluation = () => {
       </div>
 
       {/* 选择待评估政策 */}
-      <Card className="border-2 border-primary/20 bg-primary/[0.02] shadow-sm">
-        <CardHeader className="pb-3">
-          <div className="flex items-center gap-2">
-            <div className="w-1 h-5 rounded-full bg-primary" />
-            <CardTitle className="text-base">选择待评估政策</CardTitle>
+      <Card className="border-2 border-primary shadow-sm bg-white overflow-hidden">
+        <CardHeader className="pb-2 pt-6 px-6">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+              <Search className="w-5 h-5 text-primary" />
+            </div>
+            <div className="flex items-center gap-3">
+              <CardTitle className="text-lg font-bold">选择待评估政策</CardTitle>
+              <span className="px-3 py-0.5 rounded-full bg-primary text-primary-foreground text-xs font-semibold">从这里开始</span>
+            </div>
           </div>
+          <p className="text-sm text-muted-foreground mt-2 ml-[52px]">搜索并选择您要评估的政策，然后开始分析</p>
         </CardHeader>
-        <CardContent className="space-y-3">
+        <CardContent className="space-y-3 px-6 pb-6 pt-4">
           <div className="flex gap-3">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 placeholder="搜索政策名称/关键词"
-                className="pl-9 h-11 text-base border-primary/20 focus-visible:ring-primary/30"
+                className="pl-10 h-12 text-base rounded-lg border-border"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 h-11 text-base font-semibold" onClick={() => navigate("/policy-analysis")}>开始评估</Button>
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 h-12 text-base font-semibold rounded-lg" onClick={() => navigate("/policy-analysis")}>开始评估</Button>
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="text-muted-foreground">最近查看：</span>
             {recentPolicies.map((p, i) => (
               <span key={p}>
-                <button className="text-primary hover:underline text-sm">{p}</button>
+                <button className="text-primary hover:underline text-sm font-medium">{p}</button>
                 {i < recentPolicies.length - 1 && <span className="text-muted-foreground mx-2">/</span>}
               </span>
             ))}
