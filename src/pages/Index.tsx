@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { FileText, BarChart3, Award, ScrollText, Wallet, Building2, ClipboardList, ArrowRight, Sparkles } from "lucide-react";
+import { FileText, BarChart3, Award, ScrollText, Wallet, Building2, ClipboardList, ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { StatCard } from "@/components/StatCard";
@@ -40,13 +40,11 @@ const Index = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Page Title */}
       <div>
         <h1 className="text-2xl font-bold text-foreground">政策兑现</h1>
         <p className="text-sm text-muted-foreground mt-1">以数据为支撑，全面评估政策兑现效果，推动政策持续优化与精准施策</p>
       </div>
 
-      {/* Stats Overview */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard title="政策总数" value={overviewStats.totalPolicies} suffix="项" icon={ScrollText} color="bg-primary" />
         <StatCard title="兑现资金总额" value={overviewStats.totalFunds} suffix="亿元" icon={Wallet} color="bg-gov-blue" />
@@ -54,7 +52,6 @@ const Index = () => {
         <StatCard title="兑现事项数" value={overviewStats.totalItems} suffix="项" icon={ClipboardList} color="bg-gov-orange" />
       </div>
 
-      {/* Module Cards - Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {modules.map((mod) => (
           <Card
@@ -62,7 +59,6 @@ const Index = () => {
             className="overflow-hidden hover:shadow-md transition-shadow cursor-pointer group"
             onClick={() => navigate(mod.path)}
           >
-            {/* Icon & Title */}
             <div className="flex flex-col items-center pt-8 pb-4 px-6">
               <div className={`w-16 h-16 rounded-2xl ${mod.iconBg} flex items-center justify-center mb-4`}>
                 <mod.icon className={`w-8 h-8 ${mod.iconColor}`} />
@@ -70,13 +66,11 @@ const Index = () => {
               <h3 className="text-base font-bold text-foreground">{mod.title}</h3>
             </div>
 
-            {/* Description */}
             <div className="px-6 pb-4">
               <p className="text-xs text-muted-foreground leading-relaxed text-center">{mod.description}</p>
             </div>
 
-            {/* Core Capabilities */}
-            <div className="px-6 pb-6">
+            <div className="px-6 pb-4">
               <p className="text-xs font-semibold text-foreground mb-2">核心能力</p>
               <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
                 {mod.capabilities.map((cap) => (
@@ -88,7 +82,6 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Enter Button */}
             <div className="px-6 pb-6">
               <Button
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-sm"
@@ -100,21 +93,7 @@ const Index = () => {
           </Card>
         ))}
       </div>
-                  </div>
-                </div>
-                <Button
-                  className="mt-5 w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
-                  onClick={() => navigate(mod.path)}
-                >
-                  进入功能 <ArrowRight className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
-          </Card>
-        ))}
-      </div>
 
-      {/* Bottom Flow */}
       <Card className="p-6">
         <h3 className="text-sm font-semibold text-foreground mb-4">政策兑现全流程闭环</h3>
         <div className="flex items-center justify-between overflow-x-auto gap-2">
