@@ -53,8 +53,8 @@ const Index = () => {
     <div className="p-6 space-y-6">
       {/* Page Title */}
       <div>
-        <h1 className="text-2xl font-bold text-foreground">政策兑现总览</h1>
-        <p className="text-sm text-muted-foreground mt-1">北京经济技术开发区惠企政策智能管理平台</p>
+        <h1 className="text-2xl font-bold text-foreground">政策兑现</h1>
+        <p className="text-sm text-muted-foreground mt-1">以数据为支撑，全面评估政策兑现效果，推动政策持续优化与精准施策</p>
       </div>
 
       {/* Stats Overview */}
