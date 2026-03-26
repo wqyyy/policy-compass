@@ -34,7 +34,7 @@ export function AppSidebar() {
       <SidebarHeader className="p-4 border-b border-sidebar-border" />
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-sidebar-foreground/50 text-xs">功能菜单</SidebarGroupLabel>
+          
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
