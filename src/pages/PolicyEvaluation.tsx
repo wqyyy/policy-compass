@@ -100,9 +100,12 @@ const PolicyEvaluation = () => {
       </div>
 
       {/* 选择待评估政策 */}
-      <Card>
+      <Card className="border-2 border-primary/20 bg-primary/[0.02] shadow-sm">
         <CardHeader className="pb-3">
-          <CardTitle className="text-base">选择待评估政策</CardTitle>
+          <div className="flex items-center gap-2">
+            <div className="w-1 h-5 rounded-full bg-primary" />
+            <CardTitle className="text-base">选择待评估政策</CardTitle>
+          </div>
         </CardHeader>
         <CardContent className="space-y-3">
           <div className="flex gap-3">
@@ -110,12 +113,12 @@ const PolicyEvaluation = () => {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 placeholder="搜索政策名称/关键词"
-                className="pl-9"
+                className="pl-9 h-11 text-base border-primary/20 focus-visible:ring-primary/30"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6" onClick={() => navigate("/policy-analysis")}>开始评估</Button>
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 h-11 text-base font-semibold" onClick={() => navigate("/policy-analysis")}>开始评估</Button>
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="text-muted-foreground">最近查看：</span>
