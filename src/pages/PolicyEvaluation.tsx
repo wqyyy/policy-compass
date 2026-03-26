@@ -126,15 +126,6 @@ const PolicyEvaluation = () => {
             </div>
             <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 h-12 text-base font-semibold rounded-lg" onClick={() => navigate("/policy-analysis")}>开始评估</Button>
           </div>
-          <div className="flex items-center gap-2 text-sm">
-            <span className="text-muted-foreground">最近查看：</span>
-            {recentPolicies.map((p, i) => (
-              <span key={p}>
-                <button className="text-primary hover:underline text-sm font-medium">{p}</button>
-                {i < recentPolicies.length - 1 && <span className="text-muted-foreground mx-2">/</span>}
-              </span>
-            ))}
-          </div>
         </CardContent>
       </Card>
 

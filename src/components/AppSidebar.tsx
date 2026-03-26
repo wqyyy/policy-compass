@@ -31,19 +31,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="p-4 border-b border-sidebar-border">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg gov-gradient flex items-center justify-center shrink-0">
-            <Bot className="w-5 h-5 text-primary-foreground" />
-          </div>
-          {!collapsed && (
-            <div className="flex flex-col">
-              <span className="text-sm font-semibold text-sidebar-foreground">惠企政策大脑</span>
-              <span className="text-xs text-sidebar-foreground/70">政策兑现平台</span>
-            </div>
-          )}
-        </div>
-      </SidebarHeader>
+      <SidebarHeader className="p-4 border-b border-sidebar-border" />
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-sidebar-foreground/60">功能菜单</SidebarGroupLabel>
