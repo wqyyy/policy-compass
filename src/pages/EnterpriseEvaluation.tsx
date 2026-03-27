@@ -17,10 +17,6 @@ const EnterpriseEvaluation = () => {
 
   return (
     <div className="p-6 space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-foreground">企业评优</h1>
-        <p className="text-sm text-muted-foreground mt-1">智能评分模块 · 择优奖励申报事项管理</p>
-      </div>
 
       <Card>
         <CardHeader>
