@@ -108,7 +108,7 @@ const Index = () => {
           </div>
           <div className="px-5 pb-5 mt-auto">
             <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm">
-              点击进入智能评分与评优流程
+              点击进入智能评优
             </Button>
           </div>
         </Card>
