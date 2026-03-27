@@ -57,31 +57,33 @@ const PolicyEvaluation = () => {
             </p>
           </div>
 
-          {/* 使用流程 */}
-          <div className="bg-white rounded-xl p-5 border border-border">
-            <h3 className="text-sm font-semibold text-foreground mb-3">工作流程</h3>
-            <div className="flex items-center gap-0">
-              {flowSteps.map((step, i) => (
-                <div key={step} className="flex-1 flex flex-col items-center relative">
-                  <div className="flex items-center w-full">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold z-10 ${
-                      i === 0
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-background border border-border text-muted-foreground"
-                    }`}>
-                      {i + 1}
+          {/* 政策评价流程 */}
+          <Card className="p-6">
+            <h3 className="text-sm font-bold text-foreground mb-4">政策评价流程</h3>
+            <div className="flex items-center justify-between overflow-x-auto">
+              {[
+                { label: "选择政策", icon: ClipboardList, highlight: false },
+                { label: "智能分析", icon: Bot, highlight: true },
+                { label: "编辑润色", icon: PenLine, highlight: true },
+                { label: "导出报告", icon: Download, highlight: false },
+              ].map((step, i, arr) => (
+                <div key={step.label} className="flex items-center gap-1 shrink-0">
+                  <div className="flex flex-col items-center gap-2 min-w-[80px]">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step.highlight ? "bg-primary text-primary-foreground" : "bg-accent text-accent-foreground"}`}>
+                      <step.icon className="w-5 h-5" />
                     </div>
-                    {i < flowSteps.length - 1 && (
-                      <div className="flex-1 h-[2px] bg-border" />
-                    )}
+                    <span className={`text-xs whitespace-nowrap ${step.highlight ? "text-primary font-semibold" : "text-muted-foreground"}`}>{step.label}</span>
                   </div>
-                  <span className={`text-xs mt-2 ${i === 0 ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
-                    {step}
-                  </span>
+                  {i < arr.length - 1 && (
+                    <div className="flex items-center shrink-0 -mt-5">
+                      <ChevronRight className="w-5 h-5 text-primary/40" />
+                      <ChevronRight className="w-5 h-5 text-primary/40 -ml-3" />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
-          </div>
+          </Card>
         </div>
 
         {/* Right: Stats Card */}
