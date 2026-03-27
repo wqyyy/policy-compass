@@ -128,31 +128,41 @@ const Index = () => {
             </div>
           </div>
           <div className="px-5 pb-3 flex-1 space-y-3">
-            <div className="flex gap-2">
-              <span className="text-[10px] bg-primary text-primary-foreground px-2 py-0.5 rounded">已兑现事项分析</span>
-              <span className="text-[10px] bg-primary text-primary-foreground px-2 py-0.5 rounded">已兑现资金分析</span>
-            </div>
-            <div className="bg-accent/50 rounded-lg p-3 flex items-center justify-center gap-4">
-              <div className="w-12 h-12 rounded-full border-4 border-[hsl(var(--gov-blue))]/30 border-t-[hsl(var(--gov-blue))] border-r-[hsl(var(--gov-blue))]/60 relative flex items-center justify-center">
-                <div className="w-6 h-6 rounded-full bg-card" />
-              </div>
-              <div className="flex flex-col gap-1">
-                <div className="h-1.5 w-16 bg-primary/40 rounded" />
-                <div className="h-1.5 w-12 bg-[hsl(var(--gov-blue))]/40 rounded" />
-                <div className="h-1.5 w-14 bg-[hsl(var(--gov-orange))]/40 rounded" />
-              </div>
-            </div>
             <div className="grid grid-cols-2 gap-2">
-              <div className="bg-accent/50 rounded-lg p-2">
-                <p className="text-[10px] text-primary font-semibold mb-1">扶持企业情况</p>
-                <p className="text-lg font-bold text-foreground">3299 <span className="text-[10px] text-muted-foreground font-normal">家</span></p>
+              <div className="bg-accent/50 rounded-lg p-3 flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <ClipboardList className="w-4 h-4 text-primary" />
+                </div>
+                <div>
+                  <p className="text-[10px] text-muted-foreground">已发布事项</p>
+                  <p className="text-sm font-bold text-foreground">99 <span className="text-[10px] font-normal text-muted-foreground">项</span></p>
+                </div>
               </div>
-              <div className="bg-accent/50 rounded-lg p-2">
-                <p className="text-[10px] text-primary font-semibold mb-1">已扶持企业兑现占比</p>
-                <div className="flex items-end gap-0.5 mt-1">
-                  {[30, 50, 40, 60, 45].map((h, i) => (
-                    <div key={i} className="w-3 bg-primary/60 rounded-t" style={{ height: `${h * 0.4}px` }} />
-                  ))}
+              <div className="bg-accent/50 rounded-lg p-3 flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-[hsl(var(--gov-blue))]/10 flex items-center justify-center shrink-0">
+                  <Award className="w-4 h-4 text-[hsl(var(--gov-blue))]" />
+                </div>
+                <div>
+                  <p className="text-[10px] text-muted-foreground">已兑现事项</p>
+                  <p className="text-sm font-bold text-foreground">76 <span className="text-[10px] font-normal text-muted-foreground">项</span></p>
+                </div>
+              </div>
+              <div className="bg-accent/50 rounded-lg p-3 flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-[hsl(var(--gov-orange))]/10 flex items-center justify-center shrink-0">
+                  <DollarSign className="w-4 h-4 text-[hsl(var(--gov-orange))]" />
+                </div>
+                <div>
+                  <p className="text-[10px] text-muted-foreground">已兑现资金</p>
+                  <p className="text-sm font-bold text-foreground">85.3 <span className="text-[10px] font-normal text-muted-foreground">亿元</span></p>
+                </div>
+              </div>
+              <div className="bg-accent/50 rounded-lg p-3 flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                  <Users className="w-4 h-4 text-green-600" />
+                </div>
+                <div>
+                  <p className="text-[10px] text-muted-foreground">扶持企业情况</p>
+                  <p className="text-sm font-bold text-foreground">3299 <span className="text-[10px] font-normal text-muted-foreground">家</span></p>
                 </div>
               </div>
             </div>
