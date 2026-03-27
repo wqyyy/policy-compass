@@ -27,9 +27,6 @@ export function AppLayout() {
         <div className="flex flex-1 overflow-hidden w-full">
           <AppSidebar />
           <main className="flex-1 overflow-auto">
-            <div className="flex items-center gap-2 p-2 border-b">
-              <SidebarTrigger />
-            </div>
             <Outlet />
           </main>
         </div>
