@@ -193,7 +193,7 @@ const Index = () => {
             </div>
           </div>
           <div className="px-5 pb-5 mt-auto">
-            <Button className="w-full bg-[hsl(var(--gov-blue))] hover:bg-[hsl(var(--gov-blue))]/90 text-primary-foreground text-sm">
+            <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm">
               点击进入详细分析与生成专报
             </Button>
           </div>
