@@ -199,6 +199,34 @@ const Index = () => {
           </div>
         </Card>
       </div>
+
+      {/* 最新生成专报 */}
+      <Card className="p-6">
+        <h3 className="text-sm font-bold text-foreground mb-4">最近生成专报</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            { title: "北京经开区产业发展促进办法", status: "已完成", statusColor: "text-green-600 bg-green-50 border-green-200", date: "2024-03-20" },
+            { title: "科技创新企业扶持专项", status: "进行中", statusColor: "text-orange-600 bg-orange-50 border-orange-200", date: "2024-03-19" },
+            { title: "中小企业融资支持政策", status: "编辑中", statusColor: "text-orange-600 bg-orange-50 border-orange-200", date: "2024-03-18" },
+          ].map((report) => (
+            <div key={report.title} className="border rounded-lg p-4 space-y-3">
+              <p className="text-sm font-medium text-foreground">{report.title}</p>
+              <div className="flex items-center justify-between">
+                <Badge variant="outline" className={`text-[10px] ${report.statusColor}`}>
+                  <span className="w-1.5 h-1.5 rounded-full bg-current mr-1" />
+                  {report.status}
+                </Badge>
+                <span className="text-xs text-muted-foreground">{report.date}</span>
+              </div>
+              <div className="flex justify-end">
+                <button className="flex items-center gap-1 text-xs text-primary hover:underline">
+                  <Eye className="w-3 h-3" /> 查看详情
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
     </div>
   );
 };
