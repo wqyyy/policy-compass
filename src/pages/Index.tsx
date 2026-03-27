@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { FileText, BarChart3, Award, ArrowRight, BookOpen, Building2, Bot, Wallet, RefreshCw, ChevronRight } from "lucide-react";
+import { FileText, BarChart3, Award, ArrowRight, BookOpen, Building2, Bot, Wallet, RefreshCw, ChevronRight, Eye, Clock } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ const Index = () => {
                   <div className="w-8 h-8 rounded bg-accent flex items-center justify-center">
                     <Building2 className="w-4 h-4 text-foreground" />
                   </div>
-                  <span>申报企业<br/>标签设定</span>
+                  <span>申报企业<br/>标签匹配</span>
                 </div>
                 <ChevronRight className="w-3 h-3 text-muted-foreground shrink-0" />
                 <div className="flex flex-col items-center gap-1">
@@ -85,10 +86,11 @@ const Index = () => {
                   </div>
                   <span>AI自动评分</span>
                 </div>
-              </div>
-              <div className="flex justify-center mt-2">
-                <div className="flex items-center gap-1 text-[10px] text-primary font-semibold">
-                  <ArrowRight className="w-3 h-3" />
+                <ChevronRight className="w-3 h-3 text-muted-foreground shrink-0" />
+                <div className="flex flex-col items-center gap-1">
+                  <div className="w-8 h-8 rounded bg-accent flex items-center justify-center">
+                    <Award className="w-4 h-4 text-foreground" />
+                  </div>
                   <span>择优筛选列表</span>
                 </div>
               </div>
@@ -102,7 +104,7 @@ const Index = () => {
             </div>
           </div>
           <div className="px-5 pb-5 mt-auto">
-            <Button className="w-full bg-[hsl(var(--gov-blue))] hover:bg-[hsl(var(--gov-blue))]/90 text-primary-foreground text-sm">
+            <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm">
               点击进入智能评分与评优流程
             </Button>
           </div>
@@ -119,7 +121,7 @@ const Index = () => {
             </div>
             <div>
               <h3 className="text-base font-bold text-foreground">兑现效果看板</h3>
-              <p className="text-xs text-muted-foreground">（绩效实时监控中心）</p>
+              <p className="text-xs text-muted-foreground">（效果实时监控中心）</p>
             </div>
           </div>
           <div className="px-5 pb-3 flex-1 space-y-3">
@@ -153,7 +155,7 @@ const Index = () => {
             </div>
           </div>
           <div className="px-5 pb-5 mt-auto">
-            <Button className="w-full bg-[hsl(var(--gov-blue))] hover:bg-[hsl(var(--gov-blue))]/90 text-primary-foreground text-sm">
+            <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm">
               点击进入实时看板与智能交互
             </Button>
           </div>
@@ -191,12 +193,40 @@ const Index = () => {
             </div>
           </div>
           <div className="px-5 pb-5 mt-auto">
-            <Button className="w-full bg-[hsl(var(--gov-blue))] hover:bg-[hsl(var(--gov-blue))]/90 text-primary-foreground text-sm">
+            <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm">
               点击进入详细分析与生成专报
             </Button>
           </div>
         </Card>
       </div>
+
+      {/* 最新生成专报 */}
+      <Card className="p-6">
+        <h3 className="text-sm font-bold text-foreground mb-4">最近生成专报</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            { title: "北京经开区产业发展促进办法", status: "已完成", statusColor: "text-green-600 bg-green-50 border-green-200", date: "2024-03-20" },
+            { title: "科技创新企业扶持专项", status: "进行中", statusColor: "text-orange-600 bg-orange-50 border-orange-200", date: "2024-03-19" },
+            { title: "中小企业融资支持政策", status: "编辑中", statusColor: "text-orange-600 bg-orange-50 border-orange-200", date: "2024-03-18" },
+          ].map((report) => (
+            <div key={report.title} className="border rounded-lg p-4 space-y-3">
+              <p className="text-sm font-medium text-foreground">{report.title}</p>
+              <div className="flex items-center justify-between">
+                <Badge variant="outline" className={`text-[10px] ${report.statusColor}`}>
+                  <span className="w-1.5 h-1.5 rounded-full bg-current mr-1" />
+                  {report.status}
+                </Badge>
+                <span className="text-xs text-muted-foreground">{report.date}</span>
+              </div>
+              <div className="flex justify-end">
+                <button className="flex items-center gap-1 text-xs text-primary hover:underline">
+                  <Eye className="w-3 h-3" /> 查看详情
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
     </div>
   );
 };
