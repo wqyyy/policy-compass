@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, FileText, BookOpen, CheckCircle, Bot, User } from "lucide-react";
+import { Calendar, FileText, BookOpen, CheckCircle } from "lucide-react";
 import { dashboardData } from "@/data/mockData";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
