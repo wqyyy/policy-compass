@@ -70,7 +70,7 @@ const Index = () => {
                   <div className="w-8 h-8 rounded bg-accent flex items-center justify-center">
                     <Building2 className="w-4 h-4 text-foreground" />
                   </div>
-                  <span>申报企业<br/>标签设定</span>
+                  <span>申报企业<br/>标签匹配</span>
                 </div>
                 <ChevronRight className="w-3 h-3 text-muted-foreground shrink-0" />
                 <div className="flex flex-col items-center gap-1">
@@ -86,10 +86,11 @@ const Index = () => {
                   </div>
                   <span>AI自动评分</span>
                 </div>
-              </div>
-              <div className="flex justify-center mt-2">
-                <div className="flex items-center gap-1 text-[10px] text-primary font-semibold">
-                  <ArrowRight className="w-3 h-3" />
+                <ChevronRight className="w-3 h-3 text-muted-foreground shrink-0" />
+                <div className="flex flex-col items-center gap-1">
+                  <div className="w-8 h-8 rounded bg-accent flex items-center justify-center">
+                    <Award className="w-4 h-4 text-foreground" />
+                  </div>
                   <span>择优筛选列表</span>
                 </div>
               </div>
