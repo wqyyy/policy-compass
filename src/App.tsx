@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppLayout } from "@/components/AppLayout";
 import Index from "./pages/Index";
 import PolicyReport from "./pages/PolicyReport";
+import PolicyReportCreate from "./pages/PolicyReportCreate";
 import PolicyReportDetail from "./pages/PolicyReportDetail";
 import EffectDashboard from "./pages/EffectDashboard";
 import EnterpriseEvaluation from "./pages/EnterpriseEvaluation";
