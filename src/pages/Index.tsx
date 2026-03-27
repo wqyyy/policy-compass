@@ -8,124 +8,51 @@ const Index = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-foreground">政策兑现</h1>
-        <p className="text-sm text-muted-foreground mt-1">智能决策、全面监控、精准评优，推动区域经济发展</p>
+      {/* Header + 流程 */}
+      <div className="space-y-4">
+        <div>
+          <h1 className="text-2xl font-bold text-foreground">政策兑现</h1>
+          <p className="text-sm text-muted-foreground mt-1">智能决策、全面监控、精准评优，推动区域经济发展</p>
+        </div>
+
+        {/* 政策兑现流程 */}
+        <Card className="p-6">
+          <h3 className="text-sm font-bold text-foreground mb-4">政策兑现流程</h3>
+          <div className="flex items-center justify-between overflow-x-auto">
+            {[
+              { label: "政策发布", icon: BookOpen, highlight: false },
+              { label: "企业申报", icon: Building2, highlight: false },
+              { label: "企业智能评优", icon: Bot, highlight: true },
+              { label: "资金兑现与拨付", icon: Wallet, highlight: true },
+              { label: "专报分析与效果监控", icon: BarChart3, highlight: true },
+              { label: "政策优化迭代", icon: RefreshCw, highlight: false },
+            ].map((step, i, arr) => (
+              <div key={step.label} className="flex items-center gap-1 shrink-0">
+                <div className="flex flex-col items-center gap-2 min-w-[80px]">
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step.highlight ? "bg-primary text-primary-foreground" : "bg-accent text-accent-foreground"}`}>
+                    <step.icon className="w-5 h-5" />
+                  </div>
+                  <span className={`text-xs whitespace-nowrap ${step.highlight ? "text-primary font-semibold" : "text-muted-foreground"}`}>{step.label}</span>
+                </div>
+                {i < arr.length - 1 && (
+                  <div className="flex items-center shrink-0 -mt-5">
+                    <ChevronRight className="w-5 h-5 text-primary/40" />
+                    <ChevronRight className="w-5 h-5 text-primary/40 -ml-3" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </Card>
       </div>
 
-      {/* Three Module Cards */}
+      {/* Three Module Cards - 企业智能评优 moved to first, 政策兑现专报 moved to third */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {/* 政策兑现专报 */}
-        <Card
-          className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group flex flex-col"
-          onClick={() => navigate("/policy-report")}
-        >
-          {/* Title Area */}
-          <div className="flex items-center gap-3 p-5 pb-3">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-              <FileText className="w-6 h-6 text-primary" />
-            </div>
-            <div>
-              <h3 className="text-base font-bold text-foreground">政策兑现专报</h3>
-              <p className="text-xs text-muted-foreground">（智能决策量化中心）</p>
-            </div>
-          </div>
-
-          {/* Preview Content - 4 chart placeholders */}
-          <div className="px-5 pb-3 flex-1">
-            <div className="grid grid-cols-2 gap-3">
-              {["整体态势", "事项分布", "资金分布", "企业分布"].map((label) => (
-                <div key={label} className="bg-accent/50 rounded-lg p-3 flex flex-col items-center">
-                  <p className="text-xs text-muted-foreground mb-2">【{label}】</p>
-                  {/* Mini donut chart placeholder */}
-                  <div className="w-14 h-14 rounded-full border-4 border-primary/30 border-t-primary border-r-primary/60 relative flex items-center justify-center">
-                    <div className="w-7 h-7 rounded-full bg-card" />
-                  </div>
-                </div>
-              ))}
-            </div>
-            {/* AI Suggestion */}
-            <div className="mt-3 bg-accent/40 rounded-lg p-3">
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                <span className="font-semibold text-foreground">AI优化建议：</span>北京市经开区XX政策资金利用率可提升，建议优化兑现流转效率。
-              </p>
-            </div>
-          </div>
-
-          {/* Button */}
-          <div className="px-5 pb-5 mt-auto">
-            <Button className="w-full bg-[hsl(var(--gov-blue))] hover:bg-[hsl(var(--gov-blue))]/90 text-primary-foreground text-sm">
-              点击进入详细分析与生成专报
-            </Button>
-          </div>
-        </Card>
-
-        {/* 兑现效果看板 */}
-        <Card
-          className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group flex flex-col"
-          onClick={() => navigate("/effect-dashboard")}
-        >
-          {/* Title Area */}
-          <div className="flex items-center gap-3 p-5 pb-3">
-            <div className="w-12 h-12 rounded-xl bg-[hsl(var(--gov-blue))]/10 flex items-center justify-center shrink-0">
-              <BarChart3 className="w-6 h-6 text-[hsl(var(--gov-blue))]" />
-            </div>
-            <div>
-              <h3 className="text-base font-bold text-foreground">兑现效果看板</h3>
-              <p className="text-xs text-muted-foreground">（绩效实时监控中心）</p>
-            </div>
-          </div>
-
-          {/* Preview Content */}
-          <div className="px-5 pb-3 flex-1 space-y-3">
-            {/* Top analysis tabs */}
-            <div className="flex gap-2">
-              <span className="text-[10px] bg-primary text-primary-foreground px-2 py-0.5 rounded">已兑现事项分析</span>
-              <span className="text-[10px] bg-primary text-primary-foreground px-2 py-0.5 rounded">已兑现资金分析</span>
-            </div>
-            {/* Chart area placeholder */}
-            <div className="bg-accent/50 rounded-lg p-3 flex items-center justify-center gap-4">
-              <div className="w-12 h-12 rounded-full border-4 border-[hsl(var(--gov-blue))]/30 border-t-[hsl(var(--gov-blue))] border-r-[hsl(var(--gov-blue))]/60 relative flex items-center justify-center">
-                <div className="w-6 h-6 rounded-full bg-card" />
-              </div>
-              <div className="flex flex-col gap-1">
-                <div className="h-1.5 w-16 bg-primary/40 rounded" />
-                <div className="h-1.5 w-12 bg-[hsl(var(--gov-blue))]/40 rounded" />
-                <div className="h-1.5 w-14 bg-[hsl(var(--gov-orange))]/40 rounded" />
-              </div>
-            </div>
-            {/* Bottom section */}
-            <div className="grid grid-cols-2 gap-2">
-              <div className="bg-accent/50 rounded-lg p-2">
-                <p className="text-[10px] text-primary font-semibold mb-1">扶持企业情况</p>
-                <p className="text-lg font-bold text-foreground">3299 <span className="text-[10px] text-muted-foreground font-normal">家</span></p>
-              </div>
-              <div className="bg-accent/50 rounded-lg p-2">
-                <p className="text-[10px] text-primary font-semibold mb-1">已扶持企业兑现占比</p>
-                <div className="flex items-end gap-0.5 mt-1">
-                  {[30, 50, 40, 60, 45].map((h, i) => (
-                    <div key={i} className="w-3 bg-primary/60 rounded-t" style={{ height: `${h * 0.4}px` }} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Button */}
-          <div className="px-5 pb-5 mt-auto">
-            <Button className="w-full bg-[hsl(var(--gov-blue))] hover:bg-[hsl(var(--gov-blue))]/90 text-primary-foreground text-sm">
-              点击进入实时看板与智能交互
-            </Button>
-          </div>
-        </Card>
-
-        {/* 企业智能评优 */}
+        {/* 企业智能评优 (was third, now first) */}
         <Card
           className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group flex flex-col"
           onClick={() => navigate("/enterprise-evaluation")}
         >
-          {/* Title Area */}
           <div className="flex items-center gap-3 p-5 pb-3">
             <div className="w-12 h-12 rounded-xl bg-[hsl(var(--gov-orange))]/10 flex items-center justify-center shrink-0">
               <Award className="w-6 h-6 text-[hsl(var(--gov-orange))]" />
@@ -135,10 +62,7 @@ const Index = () => {
               <p className="text-xs text-muted-foreground">（择优决策自动中心）</p>
             </div>
           </div>
-
-          {/* Preview Content */}
           <div className="px-5 pb-3 flex-1 space-y-3">
-            {/* Flow diagram */}
             <div className="bg-accent/50 rounded-lg p-3">
               <div className="flex items-center justify-between text-[10px] text-muted-foreground">
                 <div className="flex flex-col items-center gap-1">
@@ -169,8 +93,6 @@ const Index = () => {
                 </div>
               </div>
             </div>
-
-            {/* 当前评优事项 */}
             <div className="bg-accent/50 rounded-lg p-3">
               <p className="text-xs font-semibold text-foreground mb-2">当前评优事项</p>
               <div className="space-y-2">
@@ -179,44 +101,99 @@ const Index = () => {
               </div>
             </div>
           </div>
-
-          {/* Button */}
           <div className="px-5 pb-5 mt-auto">
             <Button className="w-full bg-[hsl(var(--gov-blue))] hover:bg-[hsl(var(--gov-blue))]/90 text-primary-foreground text-sm">
               点击进入智能评分与评优流程
             </Button>
           </div>
         </Card>
-      </div>
 
-      {/* 政策兑现流程 */}
-      <div>
-        <h3 className="text-base font-bold text-foreground mb-4">政策兑现流程</h3>
-        <Card className="p-6">
-          <div className="flex items-center justify-between overflow-x-auto">
-            {[
-              { label: "政策发布", icon: BookOpen },
-              { label: "企业申报", icon: Building2 },
-              { label: "企业智能评优", icon: Bot, highlight: true },
-              { label: "资金兑现与拨付", icon: Wallet },
-              { label: "专报分析与效果监控", icon: BarChart3 },
-              { label: "政策优化迭代", icon: RefreshCw },
-            ].map((step, i, arr) => (
-              <div key={step.label} className="flex items-center gap-1 shrink-0">
-                <div className="flex flex-col items-center gap-2 min-w-[80px]">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step.highlight ? "bg-primary text-primary-foreground" : "bg-accent text-accent-foreground"}`}>
-                    <step.icon className="w-5 h-5" />
-                  </div>
-                  <span className={`text-xs whitespace-nowrap ${step.highlight ? "text-primary font-semibold" : "text-muted-foreground"}`}>{step.label}</span>
-                </div>
-                {i < arr.length - 1 && (
-                  <div className="flex items-center shrink-0 -mt-5">
-                    <ChevronRight className="w-5 h-5 text-primary/40" />
-                    <ChevronRight className="w-5 h-5 text-primary/40 -ml-3" />
-                  </div>
-                )}
+        {/* 兑现效果看板 (stays in middle) */}
+        <Card
+          className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group flex flex-col"
+          onClick={() => navigate("/effect-dashboard")}
+        >
+          <div className="flex items-center gap-3 p-5 pb-3">
+            <div className="w-12 h-12 rounded-xl bg-[hsl(var(--gov-blue))]/10 flex items-center justify-center shrink-0">
+              <BarChart3 className="w-6 h-6 text-[hsl(var(--gov-blue))]" />
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-foreground">兑现效果看板</h3>
+              <p className="text-xs text-muted-foreground">（绩效实时监控中心）</p>
+            </div>
+          </div>
+          <div className="px-5 pb-3 flex-1 space-y-3">
+            <div className="flex gap-2">
+              <span className="text-[10px] bg-primary text-primary-foreground px-2 py-0.5 rounded">已兑现事项分析</span>
+              <span className="text-[10px] bg-primary text-primary-foreground px-2 py-0.5 rounded">已兑现资金分析</span>
+            </div>
+            <div className="bg-accent/50 rounded-lg p-3 flex items-center justify-center gap-4">
+              <div className="w-12 h-12 rounded-full border-4 border-[hsl(var(--gov-blue))]/30 border-t-[hsl(var(--gov-blue))] border-r-[hsl(var(--gov-blue))]/60 relative flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full bg-card" />
               </div>
-            ))}
+              <div className="flex flex-col gap-1">
+                <div className="h-1.5 w-16 bg-primary/40 rounded" />
+                <div className="h-1.5 w-12 bg-[hsl(var(--gov-blue))]/40 rounded" />
+                <div className="h-1.5 w-14 bg-[hsl(var(--gov-orange))]/40 rounded" />
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="bg-accent/50 rounded-lg p-2">
+                <p className="text-[10px] text-primary font-semibold mb-1">扶持企业情况</p>
+                <p className="text-lg font-bold text-foreground">3299 <span className="text-[10px] text-muted-foreground font-normal">家</span></p>
+              </div>
+              <div className="bg-accent/50 rounded-lg p-2">
+                <p className="text-[10px] text-primary font-semibold mb-1">已扶持企业兑现占比</p>
+                <div className="flex items-end gap-0.5 mt-1">
+                  {[30, 50, 40, 60, 45].map((h, i) => (
+                    <div key={i} className="w-3 bg-primary/60 rounded-t" style={{ height: `${h * 0.4}px` }} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="px-5 pb-5 mt-auto">
+            <Button className="w-full bg-[hsl(var(--gov-blue))] hover:bg-[hsl(var(--gov-blue))]/90 text-primary-foreground text-sm">
+              点击进入实时看板与智能交互
+            </Button>
+          </div>
+        </Card>
+
+        {/* 政策兑现专报 (was first, now third) */}
+        <Card
+          className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group flex flex-col"
+          onClick={() => navigate("/policy-report")}
+        >
+          <div className="flex items-center gap-3 p-5 pb-3">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+              <FileText className="w-6 h-6 text-primary" />
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-foreground">政策兑现专报</h3>
+              <p className="text-xs text-muted-foreground">（智能决策量化中心）</p>
+            </div>
+          </div>
+          <div className="px-5 pb-3 flex-1">
+            <div className="grid grid-cols-2 gap-3">
+              {["整体态势", "事项分布", "资金分布", "企业分布"].map((label) => (
+                <div key={label} className="bg-accent/50 rounded-lg p-3 flex flex-col items-center">
+                  <p className="text-xs text-muted-foreground mb-2">【{label}】</p>
+                  <div className="w-14 h-14 rounded-full border-4 border-primary/30 border-t-primary border-r-primary/60 relative flex items-center justify-center">
+                    <div className="w-7 h-7 rounded-full bg-card" />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 bg-accent/40 rounded-lg p-3">
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                <span className="font-semibold text-foreground">AI优化建议：</span>北京市经开区XX政策资金利用率可提升，建议优化兑现流转效率。
+              </p>
+            </div>
+          </div>
+          <div className="px-5 pb-5 mt-auto">
+            <Button className="w-full bg-[hsl(var(--gov-blue))] hover:bg-[hsl(var(--gov-blue))]/90 text-primary-foreground text-sm">
+              点击进入详细分析与生成专报
+            </Button>
           </div>
         </Card>
       </div>
