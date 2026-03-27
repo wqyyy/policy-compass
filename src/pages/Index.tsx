@@ -100,6 +100,9 @@ const Index = () => {
               <div className="space-y-2">
                 <p className="text-[11px] text-muted-foreground leading-relaxed">2026年信息技术产业领域平台建设专项奖励</p>
                 <p className="text-[11px] text-muted-foreground leading-relaxed">2026年未来能源领域首台（套）首批次区级认定支持</p>
+                <p className="text-[11px] text-muted-foreground leading-relaxed">2022-2024年度燃料电池汽车示范应用配套支持</p>
+                <p className="text-[11px] text-muted-foreground leading-relaxed">2025年度未来能源关键技术创新研发支持</p>
+                <p className="text-[11px] text-muted-foreground leading-relaxed">2025年新增交通运输业企业奖励</p>
               </div>
             </div>
           </div>
