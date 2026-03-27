@@ -1,4 +1,5 @@
-import { Home, ClipboardCheck, Bot } from "lucide-react";
+import { Home, ClipboardCheck } from "lucide-react";
+import logoImg from "@/assets/logo.png";
 import { NavLink } from "@/components/NavLink";
 import {
   Sidebar,
@@ -21,9 +22,7 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <div className="flex items-center gap-2 px-4 py-4 border-b border-border">
-        <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-          <Bot className="h-4 w-4 text-primary-foreground" />
-        </div>
+        <img src={logoImg} alt="惠企政策大脑" className="w-8 h-8 rounded-lg object-contain" />
         {!collapsed && (
           <span className="text-sm font-bold text-foreground tracking-wide">惠企政策大脑</span>
         )}
