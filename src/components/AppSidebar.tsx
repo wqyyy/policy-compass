@@ -1,4 +1,4 @@
-import { Home, ClipboardCheck } from "lucide-react";
+import { Home, ClipboardCheck, Bot } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import {
   Sidebar,
