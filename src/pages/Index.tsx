@@ -21,7 +21,7 @@ const Index = () => {
           <h3 className="text-sm font-bold text-foreground mb-4">政策兑现流程</h3>
           <div className="flex items-center justify-between overflow-x-auto">
             {[
-              { label: "政策发布", icon: BookOpen, highlight: false },
+              { label: "事项发布", icon: BookOpen, highlight: false },
               { label: "企业申报", icon: Building2, highlight: false },
               { label: "企业智能评优", icon: Bot, highlight: true },
               { label: "资金兑现与拨付", icon: Wallet, highlight: true },
