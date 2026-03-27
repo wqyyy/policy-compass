@@ -24,7 +24,7 @@ export function AppLayout() {
         </div>
       </header>
       <SidebarProvider>
-        <div className="flex flex-1 overflow-hidden w-full">
+        <div className="flex flex-1 overflow-hidden w-full mt-14">
           <AppSidebar />
           <main className="flex-1 overflow-auto">
             <Outlet />
