@@ -121,7 +121,7 @@ const Index = () => {
             </div>
             <div>
               <h3 className="text-base font-bold text-foreground">兑现效果看板</h3>
-              <p className="text-xs text-muted-foreground">（绩效实时监控中心）</p>
+              <p className="text-xs text-muted-foreground">（效果实时监控中心）</p>
             </div>
           </div>
           <div className="px-5 pb-3 flex-1 space-y-3">
