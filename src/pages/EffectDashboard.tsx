@@ -20,36 +20,57 @@ const EffectDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-accent/50 to-background relative">
-      {/* Top Tab Switcher */}
-      <div className="flex items-center gap-2 px-6 pt-4 pb-2">
-        <button
-          onClick={() => setActiveTab("publish")}
-          className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
-            activeTab === "publish"
-              ? "bg-primary text-primary-foreground shadow"
-              : "bg-muted text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          政策发布情况
-        </button>
-        <button
-          onClick={() => setActiveTab("redeem")}
-          className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
-            activeTab === "redeem"
-              ? "bg-primary text-primary-foreground shadow"
-              : "bg-muted text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          政策兑现情况
-        </button>
-
-        <div className="ml-auto flex items-center gap-3">
-          <span className="text-sm text-muted-foreground font-medium">日期</span>
-          <Button variant="outline" size="sm" className="gap-2 px-4 bg-card">
-            <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
-            <span className="text-muted-foreground">请选择月份</span>
-          </Button>
+      {/* Title Banner */}
+      <div className="bg-gradient-to-r from-primary/90 via-primary to-primary/90 py-3 px-6 flex items-center justify-center gap-3">
+        <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+          <FileText className="w-4 h-4 text-primary-foreground" />
         </div>
+        <h1 className="text-lg font-bold text-primary-foreground tracking-widest">北京市经开区政策兑现效果看板</h1>
+      </div>
+
+      {/* Tab Switcher - centered */}
+      <div className="flex justify-center py-3">
+        <div className="flex bg-muted rounded-lg overflow-hidden">
+          <button
+            onClick={() => setActiveTab("publish")}
+            className={`flex items-center gap-2 px-8 py-2.5 text-sm font-medium transition-all ${
+              activeTab === "publish"
+                ? "bg-gradient-to-r from-primary/10 to-primary/5 text-primary border-b-2 border-primary"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <div className={`w-6 h-6 rounded flex items-center justify-center ${
+              activeTab === "publish" ? "bg-primary text-primary-foreground" : "bg-muted-foreground/20 text-muted-foreground"
+            }`}>
+              <FileText className="w-3.5 h-3.5" />
+            </div>
+            政策发布情况
+          </button>
+          <button
+            onClick={() => setActiveTab("redeem")}
+            className={`flex items-center gap-2 px-8 py-2.5 text-sm font-medium transition-all ${
+              activeTab === "redeem"
+                ? "bg-gradient-to-r from-primary/10 to-primary/5 text-primary border-b-2 border-primary"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <div className={`w-6 h-6 rounded flex items-center justify-center ${
+              activeTab === "redeem" ? "bg-primary text-primary-foreground" : "bg-muted-foreground/20 text-muted-foreground"
+            }`}>
+              <CheckCircle className="w-3.5 h-3.5" />
+            </div>
+            政策兑现情况
+          </button>
+        </div>
+      </div>
+
+      {/* Date Picker - left aligned */}
+      <div className="flex items-center gap-3 px-6 pb-3">
+        <span className="text-sm text-muted-foreground font-medium">日期</span>
+        <Button variant="outline" size="sm" className="gap-2 px-4 bg-card">
+          <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
+          <span className="text-muted-foreground">请选择月份</span>
+        </Button>
       </div>
 
       {/* Content */}
