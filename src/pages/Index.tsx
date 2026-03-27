@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { FileText, BarChart3, Award, ArrowRight, BookOpen, Building2, Bot, Wallet, RefreshCw, ChevronRight, Eye, Clock, ClipboardList, DollarSign, Users } from "lucide-react";
+import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from "recharts";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -128,23 +129,53 @@ const Index = () => {
             </div>
           </div>
           <div className="px-5 pb-3 flex-1 space-y-3">
+            {/* 上排：饼图 + 柱状图 */}
             <div className="grid grid-cols-2 gap-3">
-              {[
-                { label: "已发布事项", value: "99", unit: "项", icon: ClipboardList, bgColor: "bg-primary", textColor: "text-primary-foreground" },
-                { label: "已兑现事项", value: "76", unit: "项", icon: Award, bgColor: "bg-[hsl(var(--gov-blue))]", textColor: "text-primary-foreground" },
-                { label: "已兑现资金", value: "85.3", unit: "亿元", icon: DollarSign, bgColor: "bg-[hsl(var(--gov-orange))]", textColor: "text-primary-foreground" },
-                { label: "扶持企业情况", value: "3299", unit: "家", icon: Users, bgColor: "bg-emerald-500", textColor: "text-primary-foreground" },
-              ].map((item) => (
-                <div key={item.label} className="bg-accent/50 rounded-lg p-3 flex flex-col items-center text-center gap-2">
-                  <div className={`w-10 h-10 rounded-full ${item.bgColor} flex items-center justify-center`}>
-                    <item.icon className={`w-5 h-5 ${item.textColor}`} />
-                  </div>
-                  <div>
-                    <p className="text-lg font-bold text-foreground leading-tight">{item.value} <span className="text-[10px] font-normal text-muted-foreground">{item.unit}</span></p>
-                    <p className="text-[10px] text-muted-foreground mt-0.5">{item.label}</p>
-                  </div>
-                </div>
-              ))}
+              <div className="bg-accent/50 rounded-lg p-2">
+                <p className="text-[10px] text-muted-foreground text-center mb-1">事项兑现情况</p>
+                <ResponsiveContainer width="100%" height={80}>
+                  <PieChart>
+                    <Pie data={[{ name: "已兑现", value: 76 }, { name: "未兑现", value: 23 }]} cx="50%" cy="50%" innerRadius={20} outerRadius={32} dataKey="value" strokeWidth={1}>
+                      <Cell fill="hsl(var(--primary))" />
+                      <Cell fill="hsl(var(--muted))" />
+                    </Pie>
+                    <Tooltip formatter={(v: number) => `${v}项`} />
+                  </PieChart>
+                </ResponsiveContainer>
+                <p className="text-[10px] text-center text-muted-foreground">已兑现 <span className="font-bold text-foreground">76</span>/99 项</p>
+              </div>
+              <div className="bg-accent/50 rounded-lg p-2">
+                <p className="text-[10px] text-muted-foreground text-center mb-1">已兑现资金(亿元)</p>
+                <ResponsiveContainer width="100%" height={80}>
+                  <BarChart data={[{ name: "2022", v: 5.2 }, { name: "2023", v: 12.8 }, { name: "2024", v: 45.6 }, { name: "2025", v: 21.7 }]} barSize={14}>
+                    <XAxis dataKey="name" tick={{ fontSize: 8 }} axisLine={false} tickLine={false} />
+                    <Bar dataKey="v" fill="hsl(var(--primary))" radius={[2, 2, 0, 0]} />
+                    <Tooltip formatter={(v: number) => `${v}亿`} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+            {/* 下排：企业饼图 + 数字 */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-accent/50 rounded-lg p-2">
+                <p className="text-[10px] text-muted-foreground text-center mb-1">扶持企业分布</p>
+                <ResponsiveContainer width="100%" height={80}>
+                  <PieChart>
+                    <Pie data={[{ name: "大型企业", value: 320 }, { name: "中型企业", value: 980 }, { name: "小微企业", value: 1999 }]} cx="50%" cy="50%" innerRadius={20} outerRadius={32} dataKey="value" strokeWidth={1}>
+                      <Cell fill="hsl(var(--primary))" />
+                      <Cell fill="hsl(var(--gov-blue))" />
+                      <Cell fill="hsl(var(--gov-orange))" />
+                    </Pie>
+                    <Tooltip formatter={(v: number) => `${v}家`} />
+                  </PieChart>
+                </ResponsiveContainer>
+                <p className="text-[10px] text-center text-muted-foreground">共 <span className="font-bold text-foreground">3299</span> 家</p>
+              </div>
+              <div className="bg-accent/50 rounded-lg p-2 flex flex-col items-center justify-center gap-1">
+                <DollarSign className="w-5 h-5 text-primary" />
+                <p className="text-lg font-bold text-foreground leading-tight">85.3<span className="text-[10px] font-normal text-muted-foreground ml-0.5">亿元</span></p>
+                <p className="text-[10px] text-muted-foreground">已兑现资金总额</p>
+              </div>
             </div>
           </div>
           <div className="px-5 pb-5 mt-auto">
