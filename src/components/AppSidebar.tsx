@@ -20,6 +20,14 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon">
+      <div className="flex items-center gap-2 px-4 py-4 border-b border-border">
+        <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+          <Bot className="h-4 w-4 text-primary-foreground" />
+        </div>
+        {!collapsed && (
+          <span className="text-sm font-bold text-foreground tracking-wide">惠企政策大脑</span>
+        )}
+      </div>
       <SidebarContent className="pt-2">
         <SidebarMenu>
           {menuItems.map((item) => (
