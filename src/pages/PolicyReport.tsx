@@ -18,7 +18,7 @@ const PolicyReport = () => {
           <h1 className="text-2xl font-bold text-foreground">政策兑现专报</h1>
           <p className="text-sm text-muted-foreground mt-1">基于AI分析的政策兑现多维度分析报告</p>
         </div>
-        <Button className="gap-1.5">
+        <Button className="gap-1.5" onClick={() => navigate("/policy-report/create")}>
           <Plus className="w-4 h-4" /> 新建专报
         </Button>
       </div>
