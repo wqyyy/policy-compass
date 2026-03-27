@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, FileText, BookOpen, CheckCircle, Bot, User } from "lucide-react";
+import { Calendar, FileText, BookOpen, CheckCircle } from "lucide-react";
 import { dashboardData } from "@/data/mockData";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
@@ -19,90 +19,42 @@ const EffectDashboard = () => {
   const [activeTab, setActiveTab] = useState<TabType>("redeem");
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-accent/50 to-background relative pb-32">
-      {/* Header Banner */}
-      <div className="gov-gradient text-primary-foreground py-5 px-6 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20" style={{
-          background: "radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 0%, transparent 60%), radial-gradient(circle at 80% 50%, rgba(255,255,255,0.2) 0%, transparent 60%)"
-        }} />
-        <div className="flex items-center justify-center gap-3 relative z-10">
-          <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-            <FileText className="w-5 h-5" />
-          </div>
-          <h1 className="text-2xl font-bold tracking-wider">北京市经开区政策兑现效果看板</h1>
+    <div className="min-h-screen bg-gradient-to-b from-accent/50 to-background relative">
+      {/* Top Tab Switcher */}
+      <div className="flex items-center gap-2 px-6 pt-4 pb-2">
+        <button
+          onClick={() => setActiveTab("publish")}
+          className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
+            activeTab === "publish"
+              ? "bg-primary text-primary-foreground shadow"
+              : "bg-muted text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          政策发布情况
+        </button>
+        <button
+          onClick={() => setActiveTab("redeem")}
+          className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
+            activeTab === "redeem"
+              ? "bg-primary text-primary-foreground shadow"
+              : "bg-muted text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          政策兑现情况
+        </button>
+
+        <div className="ml-auto flex items-center gap-3">
+          <span className="text-sm text-muted-foreground font-medium">日期</span>
+          <Button variant="outline" size="sm" className="gap-2 px-4 bg-card">
+            <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
+            <span className="text-muted-foreground">请选择月份</span>
+          </Button>
         </div>
-        <p className="text-sm opacity-80 relative z-10 mt-1 tracking-[0.5em]">- 惠 企 政 策 大 脑 -</p>
-      </div>
-
-      {/* AI Button - top right */}
-      <div className="absolute top-3 right-6 z-20">
-        <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-white/10 gap-1.5 font-medium">
-          <Bot className="w-4 h-4" /> AI 智能助手
-        </Button>
-      </div>
-
-      {/* Date Picker */}
-      <div className="flex items-center gap-3 px-6 py-4">
-        <span className="text-sm text-muted-foreground font-medium">日期</span>
-        <Button variant="outline" size="sm" className="gap-2 px-4 bg-card">
-          <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
-          <span className="text-muted-foreground">请选择月份</span>
-        </Button>
       </div>
 
       {/* Content */}
-      <div className="px-6">
+      <div className="px-6 pb-6">
         {activeTab === "redeem" ? <RedeemView /> : <PublishView />}
-      </div>
-
-      {/* Bottom Tab Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50">
-        {/* AI Avatar */}
-        <div className="absolute right-6 -top-8 w-16 h-16 rounded-full bg-gradient-to-br from-primary/10 to-accent border-2 border-card shadow-lg flex items-center justify-center overflow-hidden">
-          <User className="w-8 h-8 text-primary/60" />
-        </div>
-
-        <div className="bg-card border-t border-border shadow-lg">
-          {/* Tabs */}
-          <div className="flex">
-            <button
-              onClick={() => setActiveTab("publish")}
-              className={`flex-1 py-4 flex items-center justify-center gap-3 text-base font-medium transition-all relative ${
-                activeTab === "publish"
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <div className={`w-7 h-7 rounded-full flex items-center justify-center ${
-                activeTab === "publish" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
-              }`}>
-                <FileText className="w-3.5 h-3.5" />
-              </div>
-              政策发布情况
-              {activeTab === "publish" && <div className="absolute bottom-0 left-1/4 right-1/4 h-0.5 bg-primary rounded-full" />}
-            </button>
-            <button
-              onClick={() => setActiveTab("redeem")}
-              className={`flex-1 py-4 flex items-center justify-center gap-3 text-base transition-all relative ${
-                activeTab === "redeem"
-                  ? "text-primary font-bold"
-                  : "text-muted-foreground font-medium hover:text-foreground"
-              }`}
-            >
-              <div className={`w-7 h-7 rounded-full flex items-center justify-center ${
-                activeTab === "redeem" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
-              }`}>
-                <CheckCircle className="w-3.5 h-3.5" />
-              </div>
-              政策兑现情况
-              {activeTab === "redeem" && <div className="absolute bottom-0 left-1/4 right-1/4 h-0.5 bg-primary rounded-full" />}
-            </button>
-          </div>
-          {/* Assistant Message */}
-          <div className="bg-foreground text-primary-foreground text-center py-2 text-sm">
-            Hi~我是亦智政务大模型平台服务助手小亦
-          </div>
-        </div>
       </div>
     </div>
   );
