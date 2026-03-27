@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 export function AppLayout() {
   return (
     <div className="min-h-screen flex flex-col w-full">
-      <header className="h-14 flex items-center justify-between bg-primary px-4 shrink-0 w-full z-10">
+      <header className="h-14 flex items-center justify-between bg-primary px-4 shrink-0 w-full z-10 fixed top-0 left-0 right-0">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-primary-foreground/20 flex items-center justify-center">
@@ -24,7 +24,7 @@ export function AppLayout() {
         </div>
       </header>
       <SidebarProvider>
-        <div className="flex flex-1 overflow-hidden w-full">
+        <div className="flex flex-1 overflow-hidden w-full mt-14">
           <AppSidebar />
           <main className="flex-1 overflow-auto">
             <Outlet />
