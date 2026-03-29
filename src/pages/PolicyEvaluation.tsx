@@ -14,7 +14,7 @@ import {
   BarChart3,
   ChevronRight,
   ClipboardList,
-  Bot,
+  BrainCircuit,
   PenLine,
   Download,
 } from "lucide-react";
@@ -63,7 +63,7 @@ const PolicyEvaluation = () => {
             <div className="flex items-center justify-between overflow-x-auto">
               {[
                 { label: "选择政策", icon: ClipboardList, highlight: false },
-                { label: "智能分析", icon: Bot, highlight: true },
+                { label: "智能分析", icon: BrainCircuit, highlight: true },
                 { label: "编辑润色", icon: PenLine, highlight: true },
                 { label: "导出报告", icon: Download, highlight: false },
               ].map((step, i, arr) => (
