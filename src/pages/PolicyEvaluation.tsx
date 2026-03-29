@@ -14,7 +14,7 @@ import {
   BarChart3,
   ChevronRight,
   ClipboardList,
-  Bot,
+  BrainCircuit,
   PenLine,
   Download,
 } from "lucide-react";
