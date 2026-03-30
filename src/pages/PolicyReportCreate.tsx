@@ -316,31 +316,6 @@ const PolicyReportCreate = () => {
         </div>
       </div>
 
-      {/* Analysis Dimensions */}
-      <div>
-        <div className="flex items-center gap-2 mb-4">
-          <div className="w-1 h-5 bg-primary rounded-sm" />
-          <h2 className="text-base font-semibold text-foreground">分析维度</h2>
-        </div>
-        <div className="space-y-3">
-          <CheckboxTagGroup
-            label="已发布事项分析"
-            items={itemAnalysis}
-            selected={itemAnalysis}
-          />
-          <CheckboxTagGroup
-            label="已拨付资金分析"
-            items={fundAnalysis}
-            selected={fundAnalysis}
-          />
-          <CheckboxTagGroup
-            label="已申报企业分析"
-            items={enterpriseAnalysis}
-            selected={enterpriseAnalysis}
-          />
-        </div>
-      </div>
-
       {/* Generate Button */}
       <div className="flex justify-end">
         <Button className="px-8" onClick={() => navigate("/policy-report/1")}>
