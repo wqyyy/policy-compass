@@ -1,4 +1,4 @@
-import { Home, ClipboardCheck } from "lucide-react";
+import { Home, ClipboardCheck, PenTool } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 import { NavLink } from "@/components/NavLink";
 import {
