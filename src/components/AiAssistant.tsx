@@ -45,9 +45,9 @@ export function AiAssistant() {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden border-2 border-primary/20 bg-white"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden border-2 border-primary bg-primary/10"
       >
-        <img src={avatarImg} alt="智能助手" className="w-full h-full object-cover" />
+        <img src={avatarImg} alt="智能助手" className="w-full h-full object-cover contrast-125 saturate-150 brightness-90" />
       </button>
     );
   }
