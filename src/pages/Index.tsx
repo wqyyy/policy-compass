@@ -185,7 +185,7 @@ const Index = () => {
           </div>
         </Card>
 
-        {/* 政策兑现专报 (was first, now third) */}
+        {/* 兑现专报生成 (was first, now third) */}
         <Card
           className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group flex flex-col"
           onClick={() => navigate("/policy-report")}
