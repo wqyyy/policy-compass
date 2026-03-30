@@ -48,7 +48,7 @@ const Index = () => {
         </Card>
       </div>
 
-      {/* Three Module Cards - 企业智能评优 moved to first, 政策兑现专报 moved to third */}
+      {/* Three Module Cards - 企业智能评优 moved to first, 兑现专报生成 moved to third */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* 企业智能评优 (was third, now first) */}
         <Card
