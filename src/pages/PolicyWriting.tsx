@@ -47,7 +47,7 @@ export default function PolicyWriting() {
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground mb-2">政策写作</h1>
+          <h1 className="text-2xl font-bold text-foreground mb-2">政策制定</h1>
           <p className="text-muted-foreground text-sm leading-relaxed whitespace-nowrap">面向政策制定场景，打通政策检索、政策分析、政策起草、政策评估四大模块，形成从"找参考"到"出成稿"的一体化智能闭环。</p>
         </div>
         <Button className="shrink-0 gap-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
@@ -58,7 +58,7 @@ export default function PolicyWriting() {
 
       {/* Flow Navigation - Icon Pipeline */}
       <Card className="px-6 py-4 border border-border">
-        <h2 className="text-base font-bold text-foreground mb-4">写作流程</h2>
+        <h2 className="text-base font-bold text-foreground mb-4">政策制定流程</h2>
         <div className="flex items-center justify-between">
           {flowSteps.map((step, i) => (
             <div key={step.title} className="flex items-center flex-1">
