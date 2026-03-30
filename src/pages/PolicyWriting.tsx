@@ -1,4 +1,4 @@
-import { Sparkles, FileText, Activity, TrendingUp, Clock, ChevronRight, Heart, PenTool, Shield, Users, ArrowRight } from "lucide-react";
+import { Sparkles, FileText, Activity, TrendingUp, Clock, ChevronRight, ChevronsRight, Heart, PenTool, Shield, Users, Search, BarChart3, FilePen, ClipboardCheck } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
