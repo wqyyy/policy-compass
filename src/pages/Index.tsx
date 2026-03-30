@@ -114,7 +114,7 @@ const Index = () => {
           </div>
         </Card>
 
-        {/* 兑现效果看板 (stays in middle) */}
+        {/* 兑现效果检测 (stays in middle) */}
         <Card
           className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group flex flex-col"
           onClick={() => navigate("/effect-dashboard")}
