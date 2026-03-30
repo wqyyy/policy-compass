@@ -61,7 +61,7 @@ const Index = () => {
             </div>
             <div>
               <h3 className="text-base font-bold text-foreground">企业智能评优</h3>
-              <p className="text-xs text-muted-foreground">（择优决策自动中心）</p>
+              <p className="text-xs text-muted-foreground"><p className="text-xs text-muted-foreground">智能评分，精准择优</p></p>
             </div>
           </div>
           <div className="px-5 pb-3 flex-1 space-y-3">
@@ -125,7 +125,7 @@ const Index = () => {
             </div>
             <div>
               <h3 className="text-base font-bold text-foreground">兑现效果看板</h3>
-              <p className="text-xs text-muted-foreground">（效果实时监控中心）</p>
+              <p className="text-xs text-muted-foreground"><p className="text-xs text-muted-foreground">实时监测，动态评估</p></p>
             </div>
           </div>
           <div className="px-5 pb-3 flex-1 space-y-3">
@@ -196,7 +196,7 @@ const Index = () => {
             </div>
             <div>
               <h3 className="text-base font-bold text-foreground">政策兑现专报</h3>
-              <p className="text-xs text-muted-foreground">（智能决策量化中心）</p>
+              <p className="text-xs text-muted-foreground"><p className="text-xs text-muted-foreground">AI分析，决策支撑</p></p>
             </div>
           </div>
           <div className="px-5 pb-3 flex-1">
