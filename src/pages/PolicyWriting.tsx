@@ -58,7 +58,7 @@ export default function PolicyWriting() {
 
       {/* Flow Navigation - Icon Pipeline */}
       <Card className="px-6 py-4 border border-border">
-        <h2 className="text-base font-bold text-foreground mb-4">写作流程</h2>
+        <h2 className="text-base font-bold text-foreground mb-4">政策制定流程</h2>
         <div className="flex items-center justify-between">
           {flowSteps.map((step, i) => (
             <div key={step.title} className="flex items-center flex-1">
