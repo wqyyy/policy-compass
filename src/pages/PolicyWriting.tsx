@@ -14,7 +14,7 @@ const flowSteps = [
   {
     num: "01",
     title: "政策搜集",
-    tag: "政策搜集",
+    tag: "找参考",
     tagColor: "bg-primary text-white",
     borderColor: "border-l-primary",
     desc: "搜集基础、辅助、对标相关政策信息，支持跨层级领域检索聚合",
