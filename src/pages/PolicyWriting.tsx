@@ -59,9 +59,9 @@ export default function PolicyWriting() {
         <div className="flex items-center justify-between">
           {flowSteps.map((step, i) => (
             <div key={step.title} className="flex items-center flex-1">
-              <div className="flex flex-col items-center gap-2 cursor-pointer group flex-1">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center bg-primary text-primary-foreground shadow-md">
-                  <step.icon className="w-6 h-6" />
+              <div className="flex flex-col items-center gap-1.5 cursor-pointer group flex-1">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary text-primary-foreground shadow-md">
+                  <step.icon className="w-5 h-5" />
                 </div>
                 <span className="text-sm font-semibold whitespace-nowrap text-foreground">{step.title}</span>
                 <span className="text-xs text-muted-foreground">{step.tag}</span>
