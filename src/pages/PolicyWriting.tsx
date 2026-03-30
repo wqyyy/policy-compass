@@ -133,13 +133,13 @@ export default function PolicyWriting() {
           </div>
         </Card>
 
-        {/* 快速入口 - 1/3 */}
+        {/* 常用功能 - 1/3 */}
         <Card className="p-6 border border-border">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
               <Zap className="w-4 h-4 text-primary" />
             </div>
-            <h2 className="text-lg font-bold text-foreground">快速入口</h2>
+            <h2 className="text-lg font-bold text-foreground">常用功能</h2>
           </div>
           <div className="grid grid-cols-1 gap-3">
             {[
