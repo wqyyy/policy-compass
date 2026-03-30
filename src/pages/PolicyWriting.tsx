@@ -22,7 +22,7 @@ const flowSteps = [
   {
     num: "02",
     title: "政策分析",
-    tag: "研判分析",
+    tag: "做判断",
     tagColor: "bg-gray-700 text-white",
     borderColor: "border-l-gray-700",
     desc: "对比政策背景、工具和措施、目标引导及提出关键性建议",
