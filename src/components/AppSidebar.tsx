@@ -1,4 +1,4 @@
-import { Home, ClipboardCheck } from "lucide-react";
+import { Home, ClipboardCheck, PenTool } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 import { NavLink } from "@/components/NavLink";
 import {
@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sidebar";
 
 const menuItems = [
+  { title: "政策制定", url: "/policy-writing", icon: PenTool },
   { title: "政策兑现", url: "/", icon: Home },
   { title: "政策评价", url: "/policy-evaluation", icon: ClipboardCheck },
 ];
