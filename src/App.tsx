@@ -13,6 +13,7 @@ import EnterpriseEvaluation from "./pages/EnterpriseEvaluation";
 import EnterpriseEvaluationDetail from "./pages/EnterpriseEvaluationDetail";
 import PolicyEvaluation from "./pages/PolicyEvaluation";
 import PolicyAnalysis from "./pages/PolicyAnalysis";
+import PolicyWriting from "./pages/PolicyWriting";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
