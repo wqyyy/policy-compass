@@ -27,6 +27,7 @@ const App = () => (
         <Routes>
           <Route element={<AppLayout />}>
             <Route path="/" element={<Index />} />
+            <Route path="/policy-writing" element={<PolicyWriting />} />
             <Route path="/policy-report" element={<PolicyReport />} />
             <Route path="/policy-report/create" element={<PolicyReportCreate />} />
             <Route path="/policy-report/:id" element={<PolicyReportDetail />} />
