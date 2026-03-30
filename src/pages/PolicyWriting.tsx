@@ -43,6 +43,7 @@ export default function PolicyWriting() {
   const navigate = useNavigate();
 
   return (
+    <div className="p-6 md:p-8 space-y-8 max-w-[1200px]">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
