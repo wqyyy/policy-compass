@@ -11,42 +11,10 @@ const stats = [
 ];
 
 const flowSteps = [
-  {
-    num: "01",
-    title: "政策搜集",
-    tag: "找参考",
-    bg: "bg-primary",
-    lightBg: "bg-primary/5",
-    borderColor: "border-primary/30",
-    desc: "搜集基础、辅助、对标相关政策信息，支持跨层级领域检索聚合",
-  },
-  {
-    num: "02",
-    title: "政策分析",
-    tag: "做判断",
-    bg: "bg-gray-700",
-    lightBg: "bg-gray-50",
-    borderColor: "border-gray-200",
-    desc: "对比政策背景、工具和措施、目标引导及提出关键性建议",
-  },
-  {
-    num: "03",
-    title: "政策起草",
-    tag: "写内容",
-    bg: "bg-emerald-500",
-    lightBg: "bg-emerald-50/50",
-    borderColor: "border-emerald-200",
-    desc: "基于前期检索及分析检测，并编辑正文、支持生成对外新闻稿",
-  },
-  {
-    num: "04",
-    title: "政策评估",
-    tag: "做校验",
-    bg: "bg-orange-500",
-    lightBg: "bg-orange-50/50",
-    borderColor: "border-orange-200",
-    desc: "从政策性、政策形式与政策兑现性等方面政策效力性进行评估并评价优化",
-  },
+  { icon: Search, title: "政策搜集", tag: "找参考", highlight: false },
+  { icon: BarChart3, title: "政策分析", tag: "做判断", highlight: true },
+  { icon: FilePen, title: "政策起草", tag: "写内容", highlight: true },
+  { icon: ClipboardCheck, title: "政策评估", tag: "做校验", highlight: false },
 ];
 
 const topics = [
