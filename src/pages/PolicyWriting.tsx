@@ -11,7 +11,7 @@ const stats = [
 ];
 
 const flowSteps = [
-  { icon: Search, title: "政策搜集", tag: "找参考", highlight: false },
+  { icon: Search, title: "政策检索", tag: "找参考", highlight: false },
   { icon: BarChart3, title: "政策分析", tag: "做判断", highlight: true },
   { icon: FilePen, title: "政策起草", tag: "写内容", highlight: true },
   { icon: ClipboardCheck, title: "政策评估", tag: "做校验", highlight: false },
@@ -46,7 +46,7 @@ export default function PolicyWriting() {
         <div>
           <h1 className="text-2xl font-bold text-foreground mb-2">政策写作</h1>
           <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl">
-            面向政府政策制定场景，打通政策检索、政策分析、政策起草、政策评估四大模块，形成从"找参考"到"出成稿"的一体化智能闭环。
+            面向政策制定场景，打通政策检索、政策分析、政策起草、政策评估四大模块，形成从"找参考"到"出成稿"的一体化智能闭环。
           </p>
         </div>
         <Button className="shrink-0 gap-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
@@ -58,26 +58,18 @@ export default function PolicyWriting() {
       {/* Flow Navigation - Icon Pipeline */}
       <Card className="p-6 border border-border">
         <h2 className="text-base font-bold text-foreground mb-6">流程导航</h2>
-        <div className="flex items-center justify-center gap-0">
+        <div className="flex items-center justify-between">
           {flowSteps.map((step, i) => (
-            <div key={step.title} className="flex items-center">
-              <div className="flex flex-col items-center gap-2 cursor-pointer group">
-                <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all ${
-                  step.highlight
-                    ? "bg-primary text-primary-foreground shadow-md"
-                    : "bg-primary/10 text-primary"
-                }`}>
+            <div key={step.title} className="flex items-center flex-1">
+              <div className="flex flex-col items-center gap-2 cursor-pointer group flex-1">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center bg-primary text-primary-foreground shadow-md">
                   <step.icon className="w-6 h-6" />
                 </div>
-                <span className={`text-sm font-semibold whitespace-nowrap ${
-                  step.highlight ? "text-primary" : "text-foreground"
-                }`}>{step.title}</span>
+                <span className="text-sm font-semibold whitespace-nowrap text-foreground">{step.title}</span>
                 <span className="text-xs text-muted-foreground">{step.tag}</span>
               </div>
               {i < flowSteps.length - 1 && (
-                <div className="mx-4 md:mx-8">
-                  <ChevronsRight className="w-6 h-6 text-primary/30" />
-                </div>
+                <ChevronsRight className="w-6 h-6 text-primary/30 shrink-0" />
               )}
             </div>
           ))}
