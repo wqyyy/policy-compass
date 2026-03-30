@@ -3,6 +3,7 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Outlet } from "react-router-dom";
+import { AiAssistant } from "@/components/AiAssistant";
 
 export function AppLayout() {
   return (
