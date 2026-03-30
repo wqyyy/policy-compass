@@ -1,7 +1,7 @@
 import { Sparkles, FileText, Activity, TrendingUp, Clock, ChevronRight, ChevronsRight, Heart, PenTool, Shield, Users, Search, BarChart3, FilePen, ClipboardCheck, Wrench, Calculator, Database, BookOpen, Zap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const stats = [
   { icon: FileText, label: "政策知识库", value: "30万+", desc: "国家到区级政策资金全覆盖", color: "bg-primary/10 text-primary" },
