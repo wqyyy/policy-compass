@@ -1,4 +1,4 @@
-import { Sparkles, FileText, Activity, TrendingUp, Clock, ChevronRight, ChevronsRight, Heart, PenTool, Shield, Users, Search, BarChart3, FilePen, ClipboardCheck } from "lucide-react";
+import { Sparkles, FileText, Activity, TrendingUp, Clock, ChevronRight, ChevronsRight, Heart, PenTool, Shield, Users, Search, BarChart3, FilePen, ClipboardCheck, Wrench, Calculator, Database, BookOpen, Zap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -88,47 +88,74 @@ export default function PolicyWriting() {
         ))}
       </div>
 
-      {/* Topic Sketches */}
-      <Card className="p-6 border border-border">
-        <div className="flex items-start justify-between mb-1">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-              <PenTool className="w-4 h-4 text-primary" />
-            </div>
-            <div>
-              <h2 className="text-lg font-bold text-foreground">政策主题速写</h2>
-              <p className="text-sm text-muted-foreground">更多主题 (8)</p>
-            </div>
-          </div>
-          <button className="text-sm text-primary font-medium hover:underline flex items-center gap-1">
-            查看全部 <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-          {topics.map((topic, i) => (
-            <Card key={i} className="p-5 border border-border hover:shadow-md transition-shadow cursor-pointer flex flex-col justify-between">
-              <div>
-                <div className="flex items-start justify-between mb-4">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${topic.iconColor}`}>
-                    <topic.icon className="w-5 h-5" />
-                  </div>
-                  <Badge className="bg-emerald-500 text-white border-0 text-xs">新推荐</Badge>
-                </div>
-                <p className="font-semibold text-sm text-foreground mb-2">{topic.title}</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{topic.desc}</p>
+      {/* Topic Sketches + Quick Entry */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* 政策主题速写 - 2/3 */}
+        <Card className="p-6 border border-border md:col-span-2">
+          <div className="flex items-start justify-between mb-1">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                <PenTool className="w-4 h-4 text-primary" />
               </div>
-              <div className="flex items-center justify-between mt-4 pt-3 border-t border-border">
-                <button className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground">
-                  <Heart className="w-3.5 h-3.5" /> 收藏
-                </button>
-                <button className="flex items-center gap-1 text-xs text-primary font-medium hover:underline">
+              <div>
+                <h2 className="text-lg font-bold text-foreground">政策主题速写</h2>
+                <p className="text-sm text-muted-foreground">更多主题 (8)</p>
+              </div>
+            </div>
+            <button className="text-sm text-primary font-medium hover:underline flex items-center gap-1">
+              查看全部 <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+          <div className="grid grid-cols-1 gap-4 mt-4">
+            {topics.map((topic, i) => (
+              <Card key={i} className="p-4 border border-border hover:shadow-md transition-shadow cursor-pointer flex items-start gap-4">
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${topic.iconColor}`}>
+                  <topic.icon className="w-5 h-5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <p className="font-semibold text-sm text-foreground">{topic.title}</p>
+                    <Badge className="bg-emerald-500/10 text-emerald-600 border-0 text-xs shrink-0">新推荐</Badge>
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{topic.desc}</p>
+                </div>
+                <button className="text-xs text-primary font-medium hover:underline flex items-center gap-1 shrink-0 mt-1">
                   开始写作 <ChevronRight className="w-3.5 h-3.5" />
                 </button>
+              </Card>
+            ))}
+          </div>
+        </Card>
+
+        {/* 快速入口 - 1/3 */}
+        <Card className="p-6 border border-border">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+              <Zap className="w-4 h-4 text-primary" />
+            </div>
+            <h2 className="text-lg font-bold text-foreground">快速入口</h2>
+          </div>
+          <div className="grid grid-cols-1 gap-3">
+            {[
+              { icon: Wrench, title: "政策工具箱", desc: "常用政策编写工具集合" },
+              { icon: Calculator, title: "政策测算", desc: "资金与效果预测模型" },
+              { icon: Database, title: "政策储备库", desc: "历史政策文档归档管理" },
+              { icon: BookOpen, title: "条款储备库", desc: "可复用条款模板库" },
+            ].map((item) => (
+              <div key={item.title} className="flex items-center gap-3 p-3 rounded-lg border border-border hover:bg-accent/50 transition-colors cursor-pointer group">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <item.icon className="w-5 h-5 text-primary" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-semibold text-foreground">{item.title}</p>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
+                <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
               </div>
-            </Card>
-          ))}
-        </div>
-      </Card>
+            ))}
+          </div>
+        </Card>
+      </div>
     </div>
   );
 }
