@@ -32,6 +32,7 @@ export function AppLayout() {
           </main>
         </div>
       </SidebarProvider>
+      <AiAssistant />
     </div>
   );
 }
