@@ -195,7 +195,7 @@ const Index = () => {
               <FileText className="w-6 h-6 text-primary" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-foreground">政策兑现专报</h3>
+              <h3 className="text-base font-bold text-foreground">兑现专报生成</h3>
               <p className="text-xs text-muted-foreground"><p className="text-xs text-muted-foreground">AI分析，决策支撑</p></p>
             </div>
           </div>

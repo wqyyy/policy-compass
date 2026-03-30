@@ -25,7 +25,7 @@ const EffectDashboard = () => {
         <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
           <FileText className="w-4 h-4 text-primary-foreground" />
         </div>
-        <h1 className="text-lg font-bold text-primary-foreground tracking-widest">北京市经开区政策兑现效果看板</h1>
+        <h1 className="text-lg font-bold text-primary-foreground tracking-widest">北京市经开区兑现效果检测</h1>
       </div>
 
       {/* Tab Switcher - centered */}
