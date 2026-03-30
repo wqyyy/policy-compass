@@ -38,7 +38,7 @@ const flowSteps = [
   {
     num: "04",
     title: "政策评估",
-    tag: "优化改造",
+    tag: "做校验",
     tagColor: "bg-orange-500 text-white",
     borderColor: "border-l-orange-500",
     desc: "从政策性、政策形式与政策兑现性等方面政策效力性进行评估并评价优化",
