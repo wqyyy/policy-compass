@@ -180,7 +180,7 @@ const Index = () => {
           </div>
           <div className="px-5 pb-5 mt-auto">
             <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm">
-              点击进入兑现效果看板
+              点击进入兑现效果检测
             </Button>
           </div>
         </Card>
