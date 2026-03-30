@@ -62,12 +62,15 @@ export default function PolicyWriting() {
         <div className="flex items-center justify-between">
           {flowSteps.map((step, i) => (
             <div key={step.title} className="flex items-center flex-1">
-              <div className="flex flex-col items-center gap-1.5 cursor-pointer group flex-1">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary text-primary-foreground shadow-md">
+              <div className="flex flex-col items-center gap-1.5 cursor-pointer group flex-1" onClick={() => navigate(step.link)}>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary text-primary-foreground shadow-md group-hover:scale-110 transition-transform">
                   <step.icon className="w-5 h-5" />
                 </div>
                 <span className="text-sm font-semibold whitespace-nowrap text-foreground">{step.title}</span>
                 <span className="text-xs text-muted-foreground">{step.tag}</span>
+                <span className="text-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-0.5">
+                  进入 <ChevronRight className="w-3 h-3" />
+                </span>
               </div>
               {i < flowSteps.length - 1 && (
                 <ChevronsRight className="w-6 h-6 text-primary/30 shrink-0" />
