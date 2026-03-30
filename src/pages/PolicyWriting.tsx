@@ -30,7 +30,7 @@ const flowSteps = [
   {
     num: "03",
     title: "政策起草",
-    tag: "有序起草",
+    tag: "写内容",
     tagColor: "bg-emerald-500 text-white",
     borderColor: "border-l-emerald-500",
     desc: "基于前期检索及分析检测，并编辑正文、支持生成对外新闻稿",
