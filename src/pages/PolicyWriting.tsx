@@ -2,6 +2,7 @@ import { Sparkles, FileText, Activity, TrendingUp, Clock, ChevronRight, Chevrons
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const stats = [
   { icon: FileText, label: "政策知识库", value: "30万+", desc: "国家到区级政策资金全覆盖", color: "bg-primary/10 text-primary" },
@@ -11,10 +12,10 @@ const stats = [
 ];
 
 const flowSteps = [
-  { icon: Search, title: "政策检索", tag: "找参考", highlight: false },
-  { icon: BarChart3, title: "政策分析", tag: "做判断", highlight: true },
-  { icon: FilePen, title: "政策起草", tag: "写内容", highlight: true },
-  { icon: ClipboardCheck, title: "政策评估", tag: "做校验", highlight: false },
+  { icon: Search, title: "政策检索", tag: "找参考", link: "/policy-analysis" },
+  { icon: BarChart3, title: "政策分析", tag: "做判断", link: "/policy-analysis" },
+  { icon: FilePen, title: "政策起草", tag: "写内容", link: "/policy-report/create" },
+  { icon: ClipboardCheck, title: "政策评估", tag: "做校验", link: "/policy-evaluation" },
 ];
 
 const topics = [
@@ -39,6 +40,8 @@ const topics = [
 ];
 
 export default function PolicyWriting() {
+  const navigate = useNavigate();
+
   return (
     <div className="p-6 md:p-8 space-y-8 max-w-[1200px]">
       {/* Header */}
@@ -59,12 +62,15 @@ export default function PolicyWriting() {
         <div className="flex items-center justify-between">
           {flowSteps.map((step, i) => (
             <div key={step.title} className="flex items-center flex-1">
-              <div className="flex flex-col items-center gap-1.5 cursor-pointer group flex-1">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary text-primary-foreground shadow-md">
+              <div className="flex flex-col items-center gap-1.5 cursor-pointer group flex-1" onClick={() => navigate(step.link)}>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary text-primary-foreground shadow-md group-hover:scale-110 transition-transform">
                   <step.icon className="w-5 h-5" />
                 </div>
                 <span className="text-sm font-semibold whitespace-nowrap text-foreground">{step.title}</span>
                 <span className="text-xs text-muted-foreground">{step.tag}</span>
+                <span className="text-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-0.5">
+                  进入 <ChevronRight className="w-3 h-3" />
+                </span>
               </div>
               {i < flowSteps.length - 1 && (
                 <ChevronsRight className="w-6 h-6 text-primary/30 shrink-0" />
