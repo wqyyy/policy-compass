@@ -1,14 +1,7 @@
-import { Search, TrendingUp, FileText, Clock, ChevronDown, Flame, ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles, ArrowRight, FileText, Users, Building2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-const stats = [
-  { label: "政策知识库", value: "30万+", desc: "国家到区级政策全量接入" },
-  { label: "智能草稿", value: "486", desc: "近 30 天 AI 生成政策草稿" },
-  { label: "评估报告", value: "128", desc: "自动完成合规与落地性评估" },
-  { label: "平均起草时长", value: "18 分钟", desc: "从主题到初稿的中位数" },
-];
 
 const flowSteps = [
   {
@@ -16,6 +9,7 @@ const flowSteps = [
     title: "政策检索",
     tag: "找依据",
     desc: "按主题、地域、时间和政策类型做多维召回，支持语义检索与条数抽取。",
+    active: true,
   },
   {
     num: "02",
@@ -37,21 +31,31 @@ const flowSteps = [
   },
 ];
 
-const topics = [
+const stats = [
+  { label: "政策知识库", value: "30万+", desc: "国家到区级政策全量接入" },
+  { label: "智能草稿", value: "486", desc: "近 30 天 AI 生成政策草稿" },
+  { label: "评估报告", value: "128", desc: "自动完成合规与落地性评估" },
+  { label: "平均起草时长", value: "18 分钟", desc: "从主题到初稿的中位数" },
+];
+
+const templates = [
   {
-    title: "推动生命健康产业高质量创新引领",
-    desc: "生物医药研发、医疗器械创新、健康服务新业态与临床成果转化",
-    hot: true,
+    icon: FileText,
+    title: "产业扶持政策模板",
+    desc: "适用于产业发展、招商引资等政策制定",
+    color: "bg-primary/10 text-primary",
   },
   {
-    title: "抢占人工智能核心技术与应用高地",
-    desc: "大模型研发、算力基础设施、AI场景开放与数据要素流通治理",
-    hot: true,
+    icon: Users,
+    title: "人才引进政策模板",
+    desc: "适用于人才培养、引进、激励等政策",
+    color: "bg-emerald-500/10 text-emerald-600",
   },
   {
-    title: "深化人才引育机制与厚植人才沃土",
-    desc: "高层次人才引进激励、青年人才培育、住房子女教育等配套保障",
-    hot: true,
+    icon: Building2,
+    title: "企业补贴政策模板",
+    desc: "适用于各类企业补贴、奖励政策制定",
+    color: "bg-violet-500/10 text-violet-600",
   },
 ];
 
@@ -93,17 +97,6 @@ export default function PolicyWriting() {
         </p>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {stats.map((s) => (
-          <Card key={s.label} className="p-4 border border-border">
-            <p className="text-xs text-muted-foreground mb-1">{s.label}</p>
-            <p className="text-2xl font-bold text-foreground">{s.value}</p>
-            <p className="text-xs text-primary/70 mt-1">{s.desc}</p>
-          </Card>
-        ))}
-      </div>
-
       {/* Flow Navigation */}
       <div>
         <div className="flex items-center gap-2 mb-1">
@@ -115,7 +108,14 @@ export default function PolicyWriting() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {flowSteps.map((step) => (
-            <Card key={step.num} className="p-4 border border-border hover:shadow-md transition-shadow cursor-pointer">
+            <Card
+              key={step.num}
+              className={`p-4 hover:shadow-md transition-shadow cursor-pointer ${
+                step.active
+                  ? "border-2 border-primary shadow-sm"
+                  : "border border-border"
+              }`}
+            >
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
                   {step.num}
@@ -131,43 +131,46 @@ export default function PolicyWriting() {
         </div>
       </div>
 
-      {/* Topic Sketches */}
-      <div>
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
-              <Sparkles className="h-3.5 w-3.5 text-primary" />
-            </span>
-            <h2 className="text-base font-bold text-foreground">政策主题速写</h2>
-          </div>
-          <button className="text-sm text-primary flex items-center gap-1 hover:underline">
-            <ChevronDown className="h-4 w-4" />
-            更多主题（8）
-          </button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {topics.map((topic, i) => (
-            <Card key={i} className="p-4 border border-border hover:shadow-md transition-shadow cursor-pointer">
-              <div className="flex items-start gap-2">
-                <span className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
-                  <ArrowRight className="h-3.5 w-3.5 text-primary" />
-                </span>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-sm font-semibold text-foreground truncate">{topic.title}</span>
-                    {topic.hot && (
-                      <Badge className="bg-primary/10 text-primary border-0 text-xs shrink-0">
-                        <Flame className="h-3 w-3 mr-0.5" /> 热门
-                      </Badge>
-                    )}
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{topic.desc}</p>
-                </div>
-              </div>
+      {/* Stats + Templates */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Stats 2x2 */}
+        <div className="grid grid-cols-2 gap-4">
+          {stats.map((s) => (
+            <Card key={s.label} className="p-4 border border-border">
+              <p className="text-xs text-muted-foreground mb-1">{s.label}</p>
+              <p className="text-2xl font-bold text-foreground">{s.value}</p>
+              <p className="text-xs text-primary/70 mt-1">{s.desc}</p>
             </Card>
           ))}
         </div>
+
+        {/* Recommended Templates */}
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-bold text-foreground">推荐模板</h2>
+            <button className="text-sm text-primary font-medium hover:underline">更多模板</button>
+          </div>
+          <div className="space-y-3">
+            {templates.map((tpl, i) => (
+              <Card
+                key={i}
+                className="p-4 border border-border hover:shadow-md transition-shadow cursor-pointer flex items-center gap-4"
+              >
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${tpl.color}`}>
+                  <tpl.icon className="w-5 h-5" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-foreground">{tpl.title}</p>
+                  <p className="text-xs text-muted-foreground">{tpl.desc}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
       </div>
+
+      {/* Divider */}
+      <div className="border-t border-dashed border-primary/30" />
 
       {/* Recent Drafts */}
       <div>
