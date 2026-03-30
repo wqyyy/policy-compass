@@ -11,10 +11,10 @@ const stats = [
 ];
 
 const flowSteps = [
-  { icon: Search, title: "政策检索", tag: "找参考", highlight: false },
-  { icon: BarChart3, title: "政策分析", tag: "做判断", highlight: true },
-  { icon: FilePen, title: "政策起草", tag: "写内容", highlight: true },
-  { icon: ClipboardCheck, title: "政策评估", tag: "做校验", highlight: false },
+  { icon: Search, title: "政策检索", tag: "找参考", link: "/policy-analysis" },
+  { icon: BarChart3, title: "政策分析", tag: "做判断", link: "/policy-analysis" },
+  { icon: FilePen, title: "政策起草", tag: "写内容", link: "/policy-report/create" },
+  { icon: ClipboardCheck, title: "政策评估", tag: "做校验", link: "/policy-evaluation" },
 ];
 
 const topics = [
