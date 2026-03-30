@@ -1,4 +1,4 @@
-import { Sparkles, FileText, Activity, TrendingUp, Clock, ChevronRight, Heart, PenTool, Shield, Users } from "lucide-react";
+import { Sparkles, FileText, Activity, TrendingUp, Clock, ChevronRight, Heart, PenTool, Shield, Users, ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,32 +15,36 @@ const flowSteps = [
     num: "01",
     title: "政策搜集",
     tag: "找参考",
-    tagColor: "bg-primary text-white",
-    borderColor: "border-l-primary",
+    bg: "bg-primary",
+    lightBg: "bg-primary/5",
+    borderColor: "border-primary/30",
     desc: "搜集基础、辅助、对标相关政策信息，支持跨层级领域检索聚合",
   },
   {
     num: "02",
     title: "政策分析",
     tag: "做判断",
-    tagColor: "bg-gray-700 text-white",
-    borderColor: "border-l-gray-700",
+    bg: "bg-gray-700",
+    lightBg: "bg-gray-50",
+    borderColor: "border-gray-200",
     desc: "对比政策背景、工具和措施、目标引导及提出关键性建议",
   },
   {
     num: "03",
     title: "政策起草",
     tag: "写内容",
-    tagColor: "bg-emerald-500 text-white",
-    borderColor: "border-l-emerald-500",
+    bg: "bg-emerald-500",
+    lightBg: "bg-emerald-50/50",
+    borderColor: "border-emerald-200",
     desc: "基于前期检索及分析检测，并编辑正文、支持生成对外新闻稿",
   },
   {
     num: "04",
     title: "政策评估",
     tag: "做校验",
-    tagColor: "bg-orange-500 text-white",
-    borderColor: "border-l-orange-500",
+    bg: "bg-orange-500",
+    lightBg: "bg-orange-50/50",
+    borderColor: "border-orange-200",
     desc: "从政策性、政策形式与政策兑现性等方面政策效力性进行评估并评价优化",
   },
 ];
@@ -83,6 +87,50 @@ export default function PolicyWriting() {
         </Button>
       </div>
 
+      {/* Flow Navigation - Pipeline Style */}
+      <div>
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-lg font-bold text-foreground">流程导航</h2>
+            <p className="text-sm text-muted-foreground mt-1">从主题输入到评估输出，按业务链路逐步推进。</p>
+          </div>
+          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+            <Sparkles className="w-5 h-5 text-primary" />
+          </div>
+        </div>
+
+        {/* Pipeline */}
+        <div className="flex items-stretch gap-0">
+          {flowSteps.map((step, i) => (
+            <div key={step.num} className="flex items-stretch flex-1 min-w-0">
+              <Card
+                className={`flex-1 p-4 cursor-pointer hover:shadow-lg transition-all border ${step.borderColor} ${step.lightBg} rounded-xl relative group`}
+              >
+                {/* Top row: number + tag */}
+                <div className="flex items-center justify-between mb-3">
+                  <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white ${step.bg}`}>
+                    {step.num}
+                  </span>
+                  <Badge className={`text-[10px] ${step.bg} text-white border-0 px-2 py-0.5`}>{step.tag}</Badge>
+                </div>
+                <p className="font-semibold text-sm text-foreground mb-1.5">{step.title}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">{step.desc}</p>
+              </Card>
+              {/* Arrow connector */}
+              {i < 3 && (
+                <div className="flex items-center justify-center w-8 shrink-0">
+                  <div className="flex flex-col items-center gap-0.5">
+                    <div className="w-5 h-[2px] bg-muted-foreground/20" />
+                    <ArrowRight className="w-4 h-4 text-muted-foreground/40" />
+                    <div className="w-5 h-[2px] bg-muted-foreground/20" />
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Stats Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {stats.map((s) => (
@@ -96,41 +144,6 @@ export default function PolicyWriting() {
           </Card>
         ))}
       </div>
-
-      {/* Flow Navigation */}
-      <Card className="p-6 border border-border">
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <h2 className="text-lg font-bold text-foreground">流程导航</h2>
-            <p className="text-sm text-muted-foreground mt-1">从主题输入到评估输出，按业务链路逐步推进。</p>
-          </div>
-          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-primary" />
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {flowSteps.map((step, i) => (
-            <Card
-              key={step.num}
-              className={`p-4 border-l-4 ${step.borderColor} border border-border hover:shadow-md transition-shadow cursor-pointer relative`}
-            >
-              <div className="flex items-start justify-between mb-3">
-                <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white ${
-                  i === 0 ? "bg-primary" : i === 1 ? "bg-gray-700" : i === 2 ? "bg-emerald-500" : "bg-orange-500"
-                }`}>
-                  {step.num}
-                </span>
-                <Badge className={`text-xs ${step.tagColor} border-0`}>{step.tag}</Badge>
-              </div>
-              <p className="font-semibold text-sm text-foreground mb-2">{step.title}</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{step.desc}</p>
-              {i < 3 && (
-                <ChevronRight className="absolute right-[-14px] top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground/40 hidden md:block z-10" />
-              )}
-            </Card>
-          ))}
-        </div>
-      </Card>
 
       {/* Topic Sketches */}
       <Card className="p-6 border border-border">
