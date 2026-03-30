@@ -14,7 +14,7 @@ const flowSteps = [
   {
     num: "01",
     title: "政策搜集",
-    tag: "政策搜集",
+    tag: "找参考",
     tagColor: "bg-primary text-white",
     borderColor: "border-l-primary",
     desc: "搜集基础、辅助、对标相关政策信息，支持跨层级领域检索聚合",
@@ -22,7 +22,7 @@ const flowSteps = [
   {
     num: "02",
     title: "政策分析",
-    tag: "研判分析",
+    tag: "做判断",
     tagColor: "bg-gray-700 text-white",
     borderColor: "border-l-gray-700",
     desc: "对比政策背景、工具和措施、目标引导及提出关键性建议",
@@ -30,7 +30,7 @@ const flowSteps = [
   {
     num: "03",
     title: "政策起草",
-    tag: "有序起草",
+    tag: "写内容",
     tagColor: "bg-emerald-500 text-white",
     borderColor: "border-l-emerald-500",
     desc: "基于前期检索及分析检测，并编辑正文、支持生成对外新闻稿",
@@ -38,7 +38,7 @@ const flowSteps = [
   {
     num: "04",
     title: "政策评估",
-    tag: "优化改造",
+    tag: "做校验",
     tagColor: "bg-orange-500 text-white",
     borderColor: "border-l-orange-500",
     desc: "从政策性、政策形式与政策兑现性等方面政策效力性进行评估并评价优化",
