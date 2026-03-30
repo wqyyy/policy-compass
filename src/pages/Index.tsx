@@ -48,7 +48,7 @@ const Index = () => {
         </Card>
       </div>
 
-      {/* Three Module Cards - 企业智能评优 moved to first, 政策兑现专报 moved to third */}
+      {/* Three Module Cards - 企业智能评优 moved to first, 兑现专报生成 moved to third */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* 企业智能评优 (was third, now first) */}
         <Card
@@ -114,7 +114,7 @@ const Index = () => {
           </div>
         </Card>
 
-        {/* 兑现效果看板 (stays in middle) */}
+        {/* 兑现效果检测 (stays in middle) */}
         <Card
           className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group flex flex-col"
           onClick={() => navigate("/effect-dashboard")}
@@ -124,7 +124,7 @@ const Index = () => {
               <BarChart3 className="w-6 h-6 text-[hsl(var(--gov-blue))]" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-foreground">兑现效果看板</h3>
+              <h3 className="text-base font-bold text-foreground">兑现效果检测</h3>
               <p className="text-xs text-muted-foreground"><p className="text-xs text-muted-foreground">实时监测，动态评估</p></p>
             </div>
           </div>
@@ -180,12 +180,12 @@ const Index = () => {
           </div>
           <div className="px-5 pb-5 mt-auto">
             <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm">
-              点击进入兑现效果看板
+              点击进入兑现效果检测
             </Button>
           </div>
         </Card>
 
-        {/* 政策兑现专报 (was first, now third) */}
+        {/* 兑现专报生成 (was first, now third) */}
         <Card
           className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group flex flex-col"
           onClick={() => navigate("/policy-report")}
@@ -195,7 +195,7 @@ const Index = () => {
               <FileText className="w-6 h-6 text-primary" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-foreground">政策兑现专报</h3>
+              <h3 className="text-base font-bold text-foreground">兑现专报生成</h3>
               <p className="text-xs text-muted-foreground"><p className="text-xs text-muted-foreground">AI分析，决策支撑</p></p>
             </div>
           </div>
