@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>政策智配 · 企业政策服务</title>
+  <link rel="stylesheet" href="./styles.css?v=20260810" />
+  <link rel="stylesheet" href="./overrides.css?v=20260811-company-name" />
+  <link rel="stylesheet" href="./inline-generation.css?v=20260810" />
+  <link rel="stylesheet" href="./reports-status.css?v=20260810" />
+  <link rel="stylesheet" href="./long-report.css?v=20260811-overlay-large" />
+</head>
+<body>
+  <main class="phone" id="app">
+    <section id="home" class="screen active">
+      <header class="hero">
+        <nav><img class="gov-brand-image" src="./assets/brand/beijing-etown-lockup.png" alt="北京经济技术开发区 · 北京亦庄"></nav>
+        <div class="orb"></div>
+        <div class="hero-copy">
+          <div class="eyebrow"><i></i> AI 政策智能匹配</div>
+          <div class="hero-title-row"><h1>选产业，<em>一键生成</em><br>您的专属政策清单</h1><button class="nav-link report-entry" id="myReports">◷ 我的报告</button></div>
+          <p>精准匹配产业政策，快速发现企业可申报、<br>可享受的政策机会。</p>
+          <div class="trust"><span>✓ 权威政策库</span><span>✓ 智能精准匹配</span><span>✓ 专业报告解读</span></div>
+        </div>
+      </header>
+      <div class="content" id="homeContent">
+        <div id="industrySelect">
+          <div class="company-field"><label for="companyName">企业名称</label><input id="companyName" maxlength="40" placeholder="请输入企业完整名称" autocomplete="organization" /></div>
+          <div class="section-title"><span>选择所属产业</span><div class="selection-meta"><em>可多选</em><b id="count">已选 0 项</b></div></div>
+          <div class="industries" id="industries"></div>
+          <button class="generate" id="generate" disabled>请至少选择一个产业</button>
+          <p class="privacy"><span class="privacy-shield">✓</span> 您的选择仅用于本次政策匹配分析</p>
+        </div>
+        <div class="inline-generating" id="inlineGenerating">
+          <button class="inline-back" id="cancelGeneration">‹ 返回</button>
+          <div class="loader"><div class="orbit-ring outer"><i></i><i></i></div><div class="orbit-ring inner"></div><div class="loader-core">AI</div><div class="scan"></div></div>
+          <h2 id="inlineTitle">正在为您生成<br>专属政策清单…</h2>
+          <p id="inlineSub">正在匹配您所选产业的相关政策，并生成<br>政策分析报告，请稍候。</p>
+          <div class="selected-tags" id="selectedTags"></div>
+          <div class="progress-card"><div class="progress-label"><span id="progressText">正在为您生成专属政策清单</span><b id="percent">8%</b></div><div class="track"><i id="progress"></i></div></div>
+          <button class="view-generated" id="viewGenerated">查看政策清单 →</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="reports" class="screen reports-screen">
+      <nav class="light-nav"><button id="reportsBack">‹</button><b>我的政策报告</b><span id="reportCount">0 份</span></nav>
+      <div class="reports-intro"><small>POLICY ARCHIVE</small><h2>企业政策资产库</h2><p>您生成的专属政策清单与分析报告</p></div>
+      <div class="history-list" id="historyList"></div>
+      <div class="empty-history" id="emptyHistory"><div>政</div><h3>还没有政策报告</h3><p>选择企业所属产业，生成第一份专属政策清单</p><button id="emptyCreate">立即生成</button></div>
+      <button class="new-report" id="newReport">＋ 新建报告</button>
+    </section>
+
+    <section id="detail" class="screen detail-screen">
+      <nav class="long-report-nav"><button id="backHome">‹</button><div><b id="longReportTitle">政策清单</b><small>长图报告 · 上下滑动查看</small></div><button id="download">下载</button></nav>
+      <div class="long-report-wrap"><img src="./assets/reports/embodied-intelligence-policy-long-v3.jpg" alt="企业政策清单长图" /></div>
+    </section>
+  </main>
+  <script src="./app.js?v=20260811-raw-report-image"></script>
+</body>
+</html>

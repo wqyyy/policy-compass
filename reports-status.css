@@ -1,0 +1,9 @@
+.history-info-head{display:flex;align-items:flex-start;gap:8px}
+.history-info-head h3{flex:1;min-width:0}
+.history-status{flex:0 0 auto;padding:4px 8px;border-radius:12px;font-size:10px;font-weight:650;white-space:nowrap}
+.status-completed{color:#178a70;background:#e6f7f1}
+.status-generating{color:#176fc0;background:#e8f3ff}
+.status-failed{color:#c55760;background:#fff0f1}
+.history-actions{display:flex;align-items:center;gap:8px;border-top:1px solid #edf1f4;padding-top:10px}
+.history-actions button{height:30px;padding:0 12px;border:1px solid #dfe7ef;border-radius:8px;background:#fff;color:#31536f;font-size:11px;cursor:pointer}
+.history-actions .history-delete{margin-left:auto;border-color:#f1d9dc;color:#bd5d66;background:#fff8f8}
