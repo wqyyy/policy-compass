@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>政策智配 · 企业政策服务</title>
   <link rel="stylesheet" href="./styles.css?v=20260810" />
-  <link rel="stylesheet" href="./overrides.css?v=20260811-company-name" />
+  <link rel="stylesheet" href="./overrides.css?v=20260817-subject-selector" />
   <link rel="stylesheet" href="./inline-generation.css?v=20260810" />
   <link rel="stylesheet" href="./reports-status.css?v=20260810" />
   <link rel="stylesheet" href="./long-report.css?v=20260811-overlay-large" />
@@ -25,7 +25,21 @@
       </header>
       <div class="content" id="homeContent">
         <div id="industrySelect">
-          <div class="company-field"><label for="companyName">企业名称</label><input id="companyName" maxlength="40" placeholder="请输入企业完整名称" autocomplete="organization" /></div>
+          <div class="identity-section">
+            <label>服务对象</label>
+            <div class="identity-switch" role="tablist" aria-label="选择服务对象"><button class="active" data-subject="personal" role="tab">个人</button><button data-subject="enterprise" role="tab">企业</button></div>
+            <div class="identity-panel" id="personalIdentity">
+              <div class="wechat-account is-hidden" id="wechatAccount"><span class="identity-avatar">微</span><div><b id="wechatNickname">微信用户</b><small>微信账号已关联</small></div><i>✓</i></div>
+              <button class="wechat-authorize" id="authorizeWechat">获取个人微信信息</button>
+              <p>授权后仅用于识别报告归属，不会公开您的微信信息</p>
+            </div>
+            <div class="identity-panel is-hidden" id="enterpriseIdentity">
+              <div class="enterprise-search"><span>⌕</span><input id="enterpriseSearch" maxlength="40" placeholder="搜索企业库中的企业名称" autocomplete="off" /></div>
+              <div class="enterprise-results is-hidden" id="enterpriseResults"></div>
+              <div class="selected-enterprise is-hidden" id="selectedEnterprise"><span class="identity-avatar enterprise-avatar">企</span><div><small>已从企业库选择</small><b id="selectedEnterpriseName"></b></div><i>✓</i></div>
+              <p>企业名称必须从企业库搜索结果中选择</p>
+            </div>
+          </div>
           <div class="section-title"><span>选择所属产业</span><div class="selection-meta"><em>可多选</em><b id="count">已选 0 项</b></div></div>
           <div class="industries" id="industries"></div>
           <button class="generate" id="generate" disabled>请至少选择一个产业</button>
@@ -56,6 +70,6 @@
       <div class="long-report-wrap"><img src="./assets/reports/embodied-intelligence-policy-long-v3.jpg" alt="企业政策清单长图" /></div>
     </section>
   </main>
-  <script src="./app.js?v=20260811-raw-report-image"></script>
+  <script src="./app.js?v=20260817-subject-selector"></script>
 </body>
 </html>
