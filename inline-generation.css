@@ -1,6 +1,6 @@
 .is-hidden{display:none!important}
-.content.generating-mode{padding:0;background:#071d38}
-.inline-generating{display:none;position:relative;min-height:620px;margin:0;padding:48px 46px 40px;border-radius:22px 22px 0 0;color:#fff;text-align:center;background:radial-gradient(circle at 50% 22%,#16466b 0,#0b2c51 42%,#071d38 100%);overflow:hidden}
+.content.generating-mode{padding:0;background:#123f65}
+.inline-generating{display:none;position:relative;min-height:620px;margin:0;padding:48px 46px 40px;border-radius:22px 22px 0 0;color:#fff;text-align:center;background:radial-gradient(circle at 50% 22%,#2a7295 0,#1b557c 42%,#123f65 100%);overflow:hidden}
 .inline-generating.active{display:block}
 .inline-generating .loader{width:240px;height:240px;margin:0 auto 16px}
 .inline-generating .orbit-ring.outer{width:230px;height:230px}
