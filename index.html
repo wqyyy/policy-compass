@@ -29,9 +29,9 @@
             <label>服务对象</label>
             <div class="identity-switch" role="tablist" aria-label="选择服务对象"><button class="active" data-subject="personal" role="tab">个人</button><button data-subject="enterprise" role="tab">企业</button></div>
             <div class="identity-panel" id="personalIdentity">
-              <div class="wechat-account is-hidden" id="wechatAccount"><span class="identity-avatar">微</span><div><b id="wechatNickname">微信用户</b><small>微信账号已关联</small></div><i>✓</i></div>
+              <div class="wechat-account is-hidden" id="wechatAccount"><span class="identity-avatar">微</span><div><b id="wechatNickname">政策体验用户</b><small>微信昵称 · 账号已关联</small></div><i>✓</i></div>
               <button class="wechat-authorize" id="authorizeWechat">重新获取微信信息</button>
-              <p>已默认关联微信身份，仅用于识别报告归属</p>
+              <p>微信昵称仅用于识别报告归属，不会公开展示</p>
             </div>
             <div class="identity-panel is-hidden" id="enterpriseIdentity">
               <div class="enterprise-search"><span>⌕</span><input id="enterpriseSearch" maxlength="40" placeholder="搜索企业库中的企业名称" autocomplete="off" /></div>
@@ -70,6 +70,6 @@
       <div class="long-report-wrap"><img src="./assets/reports/embodied-intelligence-policy-long-v3.jpg" alt="企业政策清单长图" /></div>
     </section>
   </main>
-  <script src="./app.js?v=20260817-industry-titles-only"></script>
+  <script src="./app.js?v=20260817-wechat-nickname"></script>
 </body>
 </html>

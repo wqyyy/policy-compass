@@ -31,7 +31,7 @@ const enterpriseLibrary=[
 ];
 const $=s=>document.querySelector(s),selected=new Set();
 let reports=JSON.parse(localStorage.getItem('policyReportsH5')||'[]').map(r=>({...r,status:r.status==='generating'&&r.readyAt&&Date.now()>=r.readyAt?'completed':r.status||'completed',companyName:r.companyName||'企业名称'})),currentReport=null,detailFrom='home',generationInterval=null,generationTimeout=null,subjectType='personal',wechatIdentity=JSON.parse(localStorage.getItem('policyWechatIdentityH5')||'null'),selectedEnterprise='';
-if(!wechatIdentity){wechatIdentity={nickname:'微信用户',openid:`preview_${Date.now()}`};localStorage.setItem('policyWechatIdentityH5',JSON.stringify(wechatIdentity))}
+if(!wechatIdentity||!wechatIdentity.nickname||wechatIdentity.nickname==='微信用户'){wechatIdentity={...(wechatIdentity||{}),nickname:'政策体验用户',openid:wechatIdentity?.openid||`preview_${Date.now()}`};localStorage.setItem('policyWechatIdentityH5',JSON.stringify(wechatIdentity))}
 const getIndustry=id=>industries.find(i=>i[0]===id);
 const show=id=>{document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$('#'+id).classList.add('active');scrollTo(0,0)};
 const statusMap={completed:'已完成',generating:'生成中',failed:'失败'};
