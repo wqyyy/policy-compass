@@ -14,5 +14,6 @@
 .view-generated{display:none;width:100%;height:52px;margin-top:18px;border:0;border-radius:13px;background:linear-gradient(135deg,#36bba7,#218bd2);color:#fff;font-size:15px;font-weight:700;cursor:pointer}
 .inline-generating.complete .view-generated{display:block}
 .inline-generating.complete .loader-core{box-shadow:0 0 80px #57ddcb66}
+.inline-generating.complete .orbit-ring,.inline-generating.complete .loader-core,.inline-generating.complete .scan{animation:none}.inline-generating.complete .scan{transform:none;opacity:.4}
 .inline-back{position:absolute;z-index:3;left:24px;top:22px;height:38px;padding:0 14px;border:1px solid #ffffff22;border-radius:20px;background:#ffffff0d;color:#ffffffcc;font-size:13px;cursor:pointer}
 @media(max-width:520px){.inline-generating{min-height:590px;padding:54px 18px 30px}.inline-generating .loader{width:220px;height:220px}.inline-generating .orbit-ring.outer{width:210px;height:210px}.inline-generating .orbit-ring.inner{width:148px;height:148px}.inline-back{left:16px;top:16px}}
