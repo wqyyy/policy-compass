@@ -6,7 +6,7 @@
   <title>政策智配 · 企业政策服务</title>
   <link rel="stylesheet" href="./styles.css?v=20260810" />
   <link rel="stylesheet" href="./overrides.css?v=20260817-moon-profile" />
-  <link rel="stylesheet" href="./inline-generation.css?v=20260818-hide-complete-progress" />
+  <link rel="stylesheet" href="./inline-generation.css?v=20260818-move-progress-copy" />
   <link rel="stylesheet" href="./reports-status.css?v=20260810" />
   <link rel="stylesheet" href="./long-report.css?v=20260811-overlay-large" />
 </head>
@@ -47,9 +47,9 @@
           <button class="inline-back" id="cancelGeneration">‹ 返回</button>
           <div class="loader"><div class="orbit-ring outer"><i></i><i></i></div><div class="orbit-ring inner"></div><div class="loader-core">AI</div><div class="scan"></div></div>
           <h2 id="inlineTitle">正在为您生成<br>专属政策清单…</h2>
-          <p id="inlineSub">报告生成预计需要 1 分钟，您可先退出，<br>稍后前往「我的报告」查看生成结果。</p>
+          <p id="inlineSub"></p>
           <div class="selected-tags" id="selectedTags"></div>
-          <div class="progress-card"><div class="progress-label"><span id="progressText">正在为您生成专属政策清单</span><b id="percent">8%</b></div><div class="track"><i id="progress"></i></div></div>
+          <div class="progress-card"><div class="progress-label"><span id="progressText">报告生成预计需要 1 分钟，您可先退出，稍后前往「我的报告」查看生成结果。</span><b id="percent">8%</b></div><div class="track"><i id="progress"></i></div></div>
           <button class="view-generated" id="viewGenerated">查看政策清单 →</button>
         </div>
       </div>
@@ -68,6 +68,6 @@
       <div class="long-report-wrap"><img src="./assets/reports/embodied-intelligence-policy-long-v3.jpg" alt="企业政策清单长图" /></div>
     </section>
   </main>
-  <script src="./app.js?v=20260817-moon-profile"></script>
+  <script src="./app.js?v=20260818-move-progress-copy"></script>
 </body>
 </html>
