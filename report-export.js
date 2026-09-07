@@ -98,7 +98,7 @@
   }
 
   async function exportImage(frame, wrap, filename, onProgress) {
-    const { canvas } = await renderHtmlCanvas(frame, wrap, onProgress, '正在生成高清长图')
+    const { canvas } = await renderHtmlCanvas(frame, wrap, onProgress, '正在生成长图')
     onProgress('长图已生成', '正在准备下载…')
     const blob = await canvasBlob(canvas, 'image/png')
     downloadBlob(blob, filename)
@@ -122,7 +122,7 @@
         const pageElement = pageElements[page]
         const sourceWidth = pageElement.offsetWidth
         const sourceHeight = pageElement.offsetHeight
-        onProgress('正在转换高清 PDF', `正在生成第 ${page + 1} / ${pageElements.length} 页，请勿关闭页面`)
+        onProgress('正在转换为 PDF', `正在生成第 ${page + 1} / ${pageElements.length} 页，请勿关闭页面`)
         const pageCanvas = await global.html2canvas(pageElement, {
           backgroundColor: '#ffffff',
           scale: pdfScale,
