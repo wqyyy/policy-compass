@@ -47,14 +47,13 @@
     qr.insertAdjacentElement('afterend', makeLink(href, '查看原文'))
   })
 
-  const policyNote = document.querySelector('#policy-root')?.closest('section')?.querySelector('.sec-head > p')
-  if (policyNote) {
+  document.querySelectorAll('.logic-policy .sec-head > p').forEach(policyNote => {
     policyNote.classList.add('report-export-only')
     const interactiveNote = document.createElement('p')
     interactiveNote.className = 'report-interactive-only'
     interactiveNote.textContent = '按国家/部委级、北京市、北京经开区分组展示；点击“查看原文”可在新页面打开政策原文。'
     policyNote.insertAdjacentElement('afterend', interactiveNote)
-  }
+  })
 
   document.querySelectorAll('.new-qr-row > a').forEach(link => {
     const href = safeUrl(link.getAttribute('href') || link.querySelector('[data-url]')?.dataset.url)

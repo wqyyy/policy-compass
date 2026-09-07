@@ -1,4 +1,37 @@
 /* HTML 浏览模式显示可点击链接；长图/PDF 导出时恢复原二维码版式。 */
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.logic-policy col:nth-child(1) { width: 5% !important; }
+.logic-policy col:nth-child(2) { width: 29% !important; }
+.logic-policy col:nth-child(3) { width: 22% !important; }
+.logic-policy col:nth-child(4) { width: 19% !important; }
+.logic-policy col:nth-child(5) { width: 12% !important; }
+.logic-policy col:nth-child(6) { width: 13% !important; }
+.logic-policy th {
+  padding: 13px 11px;
+  font-size: 14px;
+}
+.logic-policy td {
+  padding: 12px 11px;
+  color: #183d5d;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.62;
+}
+.logic-policy td.qr {
+  padding-right: 8px;
+  padding-left: 8px;
+  overflow: visible;
+}
+.new-content p,
+.new-support,
+.new-support strong,
+.new-meta p {
+  font-size: 14px;
+}
 .report-interactive-link {
   display: inline-flex;
   align-items: center;
@@ -51,7 +84,10 @@
 
 /* 政策文件清单入口 */
 td.qr .report-interactive-link {
-  min-width: 88px;
+  width: 100%;
+  min-width: 0;
+  padding-right: 8px;
+  padding-left: 8px;
   white-space: nowrap;
 }
 .policy-qr {
