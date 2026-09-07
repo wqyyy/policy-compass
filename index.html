@@ -67,7 +67,7 @@
       <nav class="long-report-nav"><button id="backHome">‹</button><div><b id="longReportTitle">政策清单</b><small>HTML 报告 · 上下滑动查看</small></div><button id="download">下载</button></nav>
       <div class="long-report-wrap" id="longReportWrap">
         <div class="report-html-loading" id="reportHtmlLoading"><span></span><b>正在加载 HTML 报告…</b></div>
-        <iframe id="longReportFrame" class="report-html-frame" title="政策清单 HTML 报告" src="./long.html?v=20260907-html-report-v2"></iframe>
+        <iframe id="longReportFrame" class="report-html-frame" title="政策清单 HTML 报告" src="./long.html?v=20260907-paginated-html-v3"></iframe>
       </div>
     </section>
   </main>
@@ -78,7 +78,7 @@
       <h3 id="downloadSheetTitle">选择下载格式</h3>
       <p>下载文件将根据当前 HTML 报告实时生成，较长报告可能需要 1–2 分钟</p>
       <button class="download-option" data-download-format="image"><span class="download-option-icon">▧</span><span><b>下载长图</b><small>将 HTML 报告生成 PNG 图片</small></span><i>›</i></button>
-      <button class="download-option" data-download-format="pdf"><span class="download-option-icon pdf">PDF</span><span><b>下载 PDF</b><small>将 HTML 报告转换为分页 PDF</small></span><i>›</i></button>
+      <button class="download-option" data-download-format="pdf"><span class="download-option-icon pdf">PDF</span><span><b>下载 PDF</b><small>按 34 个逻辑页面转换，事项卡片不跨页</small></span><i>›</i></button>
       <button class="download-cancel" id="cancelDownload">取消</button>
     </section>
   </div>
@@ -87,7 +87,7 @@
   </div>
   <script src="./vendor/html2canvas.min.js?v=1.4.1"></script>
   <script src="./vendor/jspdf.umd.min.js?v=4.2.1"></script>
-  <script src="./report-export.js?v=20260907-html-report"></script>
-  <script src="./app.js?v=20260907-html-report"></script>
+  <script src="./report-export.js?v=20260907-paginated-html-v3"></script>
+  <script src="./app.js?v=20260907-paginated-html-v3"></script>
 </body>
 </html>
