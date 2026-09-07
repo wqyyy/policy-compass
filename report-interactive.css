@@ -1,0 +1,105 @@
+/* HTML 浏览模式显示可点击链接；长图/PDF 导出时恢复原二维码版式。 */
+.report-interactive-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 9px 15px;
+  border: 1px solid #9fd2ed;
+  border-radius: 10px;
+  color: #0876df;
+  background: linear-gradient(135deg, #f4fbff, #e8f6ff);
+  box-shadow: 0 6px 16px rgba(8, 118, 223, .08);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-decoration: none;
+  cursor: pointer;
+}
+.report-interactive-link:hover {
+  border-color: #25a9d8;
+  color: #075fab;
+  background: #e5f6ff;
+}
+.report-interactive-link:focus-visible {
+  outline: 3px solid rgba(18, 185, 210, .3);
+  outline-offset: 2px;
+}
+.report-interactive-link .external-arrow {
+  font: 900 15px/1 Arial;
+}
+.report-export-only {
+  display: none;
+}
+
+/* 封面平台入口 */
+.hero-platform {
+  justify-content: center;
+}
+.hero-platform .report-interactive-link {
+  width: 100%;
+  min-height: 54px;
+  padding: 9px 11px;
+  text-align: center;
+  font-size: 11px;
+}
+.hero-platform > img,
+.hero-platform > span {
+  display: none;
+}
+
+/* 政策文件清单入口 */
+td.qr .report-interactive-link {
+  min-width: 88px;
+  white-space: nowrap;
+}
+.policy-qr {
+  display: none;
+}
+
+/* 事项卡片入口 */
+.new-qr-row > a {
+  min-height: 60px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.new-qr-row .new-qr,
+.new-qr-row > a > div:not(.new-qr):not(.report-interactive-link) {
+  display: none;
+}
+.new-qr-row .report-interactive-link {
+  width: 100%;
+  min-height: 42px;
+  padding: 8px 12px;
+}
+
+/* 导出模式：二维码保留，交互链接不进入图片与 PDF。 */
+html.is-exporting .report-interactive-link {
+  display: none !important;
+}
+html.is-exporting .report-export-only {
+  display: block;
+}
+html.is-exporting .report-interactive-only {
+  display: none;
+}
+html.is-exporting .hero-platform {
+  justify-content: flex-start;
+}
+html.is-exporting .hero-platform > img {
+  display: block;
+}
+html.is-exporting .hero-platform > span {
+  display: inline;
+}
+html.is-exporting .policy-qr {
+  display: block;
+}
+html.is-exporting .new-qr-row .new-qr {
+  display: block;
+}
+html.is-exporting .new-qr-row > a > div:not(.new-qr):not(.report-interactive-link) {
+  display: block;
+}

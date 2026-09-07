@@ -24,6 +24,7 @@
       image.addEventListener('error', resolve, { once: true })
     })))
     for (let i = 0; i < 40 && doc.documentElement.dataset.qrReady !== '1'; i += 1) await delay(50)
+    for (let i = 0; i < 40 && doc.documentElement.dataset.interactiveLinksReady !== '1'; i += 1) await delay(50)
     await nextFrame()
     return doc
   }
@@ -61,31 +62,39 @@
 
   async function renderHtmlCanvas(frame, wrap, onProgress, title) {
     if (typeof global.html2canvas !== 'function') throw new Error('图片转换组件未加载')
-    const { poster, width, height } = await fit(frame, wrap)
-    onProgress(title, '正在渲染 HTML 报告，请稍候…')
-    const maxCanvasArea = 22000000
-    const maxCanvasHeight = 24000
-    const scale = Math.min(0.6, maxCanvasHeight / height, Math.sqrt(maxCanvasArea / (width * height)))
-    const pages = Array.from(poster.querySelectorAll(':scope > .logic-page')).map(page => ({
-      left: page.offsetLeft,
-      top: page.offsetTop,
-      width: page.offsetWidth,
-      height: page.offsetHeight
-    }))
-    const canvas = await global.html2canvas(poster, {
-      backgroundColor: '#ffffff',
-      scale,
-      useCORS: true,
-      logging: false,
-      imageTimeout: 0,
-      width,
-      height,
-      windowWidth: width,
-      windowHeight: height,
-      scrollX: 0,
-      scrollY: 0
-    })
-    return { canvas, pages, scale, width, height }
+    const doc = await waitForReport(frame)
+    doc.documentElement.classList.add('is-exporting')
+    try {
+      await nextFrame()
+      const { poster, width, height } = await fit(frame, wrap)
+      onProgress(title, '正在渲染 HTML 报告，请稍候…')
+      const maxCanvasArea = 22000000
+      const maxCanvasHeight = 24000
+      const scale = Math.min(0.6, maxCanvasHeight / height, Math.sqrt(maxCanvasArea / (width * height)))
+      const pages = Array.from(poster.querySelectorAll(':scope > .logic-page')).map(page => ({
+        left: page.offsetLeft,
+        top: page.offsetTop,
+        width: page.offsetWidth,
+        height: page.offsetHeight
+      }))
+      const canvas = await global.html2canvas(poster, {
+        backgroundColor: '#ffffff',
+        scale,
+        useCORS: true,
+        logging: false,
+        imageTimeout: 0,
+        width,
+        height,
+        windowWidth: width,
+        windowHeight: height,
+        scrollX: 0,
+        scrollY: 0
+      })
+      return { canvas, pages, scale, width, height }
+    } finally {
+      doc.documentElement.classList.remove('is-exporting')
+      await fit(frame, wrap)
+    }
   }
 
   async function exportImage(frame, wrap, filename, onProgress) {
