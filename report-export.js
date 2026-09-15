@@ -29,10 +29,23 @@
     return doc
   }
 
+  function reportPages(poster) {
+    return Array.from(poster.querySelectorAll(':scope > .logic-page')).filter(page => {
+      if (page.hidden || page.offsetWidth === 0 || page.offsetHeight === 0) return false
+      return page.textContent.trim() || page.querySelector('img,svg,canvas,table')
+    })
+  }
+
+  function reportHeight(poster) {
+    const pages = reportPages(poster)
+    const lastPage = pages[pages.length - 1]
+    return lastPage ? Math.ceil(lastPage.offsetTop + lastPage.offsetHeight) : Math.max(poster.scrollHeight, poster.offsetHeight)
+  }
+
   async function fit(frame, wrap) {
     const doc = await waitForReport(frame)
     const poster = doc.querySelector('.poster') || doc.body
-    const height = Math.max(poster.scrollHeight, poster.offsetHeight, doc.documentElement.scrollHeight)
+    const height = reportHeight(poster)
     const width = Math.max(poster.scrollWidth, poster.offsetWidth, REPORT_WIDTH)
     frame.style.width = `${width}px`
     frame.style.height = `${height}px`
@@ -71,7 +84,7 @@
     const maxCanvasArea = 35000000
     const maxCanvasHeight = 32700
     const scale = Math.min(0.72, maxCanvasHeight / height, Math.sqrt(maxCanvasArea / (width * height)))
-      const pages = Array.from(poster.querySelectorAll(':scope > .logic-page')).map(page => ({
+      const pages = reportPages(poster).map(page => ({
         left: page.offsetLeft,
         top: page.offsetTop,
         width: page.offsetWidth,
@@ -111,7 +124,7 @@
     try {
       await nextFrame()
       const { poster } = await fit(frame, wrap)
-      const pageElements = Array.from(poster.querySelectorAll(':scope > .logic-page'))
+      const pageElements = reportPages(poster)
       if (!pageElements.length) pageElements.push(poster)
       const firstWidth = pageElements[0].offsetWidth
       const firstHeight = pageElements[0].offsetHeight
