@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>意见反馈 · 政策清单</title>
+  <style>
+    :root{--blue:#1677e8;--navy:#123b66;--muted:#71869b;--line:#d8e6f1;--soft:#f2f8fd;--green:#15a77a}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:linear-gradient(180deg,#eaf5ff 0,#f7fbff 42%,#fff 100%);color:var(--navy);font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+    .page{width:min(100%,560px);margin:0 auto;padding:28px 18px 48px}
+    .brand{display:flex;align-items:center;gap:9px;margin-bottom:26px;color:#4d718f;font-size:13px;font-weight:700;letter-spacing:1px}
+    .brand i{width:9px;height:9px;border-radius:50%;background:#35cfb1;box-shadow:0 0 0 5px rgba(53,207,177,.12)}
+    .intro{margin-bottom:22px}
+    .intro span{display:inline-block;padding:6px 11px;border-radius:999px;background:#dff0ff;color:var(--blue);font-size:12px;font-weight:800}
+    h1{margin:15px 0 9px;font-size:32px;line-height:1.2}
+    .intro p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
+    form,.success{padding:22px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.94);box-shadow:0 18px 45px rgba(42,99,145,.1)}
+    label{display:block;margin:0 0 10px;font-size:14px;font-weight:800}
+    .types{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:20px}
+    .type{height:42px;border:1px solid var(--line);border-radius:10px;background:var(--soft);color:#4e6d87;font-weight:700;cursor:pointer}
+    .type.active{border-color:var(--blue);background:#e7f2ff;color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+    textarea,input{width:100%;border:1px solid var(--line);border-radius:12px;background:#fbfdff;color:var(--navy);font:14px/1.65 inherit;outline:none}
+    textarea{min-height:140px;padding:13px 14px;resize:vertical}
+    input{height:48px;margin-top:16px;padding:0 14px}
+    textarea:focus,input:focus{border-color:#68aaf0;box-shadow:0 0 0 3px rgba(22,119,232,.1)}
+    .count{margin:6px 2px 18px;text-align:right;color:#9aabba;font-size:12px}
+    .submit{width:100%;height:50px;border:0;border-radius:13px;background:linear-gradient(100deg,#126bd0,#32a8ef);color:#fff;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 10px 22px rgba(22,119,232,.2)}
+    .note{margin:13px 0 0;text-align:center;color:#93a3b1;font-size:12px}
+    .success{display:none;text-align:center;padding:42px 24px}
+    .success.active{display:block}.success i{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 16px;border-radius:50%;background:#e3f8f1;color:var(--green);font-size:28px;font-style:normal;font-weight:900}
+    .success h2{margin:0 0 8px}.success p{margin:0;color:var(--muted);line-height:1.7}.success button{margin-top:22px;border:0;background:transparent;color:var(--blue);font-size:14px;font-weight:800;cursor:pointer}
+    @media(max-width:420px){h1{font-size:28px}.types{gap:7px}.type{font-size:12px}form{padding:18px}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="brand"><i></i>北京经开区 · 政策清单服务</div>
+    <section class="intro">
+      <span>FEEDBACK</span>
+      <h1>意见反馈</h1>
+      <p>您的建议将帮助我们持续优化政策清单内容与使用体验。</p>
+    </section>
+    <form id="feedbackForm">
+      <label>反馈类型</label>
+      <div class="types" role="group" aria-label="反馈类型">
+        <button class="type active" type="button" data-type="政策内容">政策内容</button>
+        <button class="type" type="button" data-type="使用体验">使用体验</button>
+        <button class="type" type="button" data-type="其他建议">其他建议</button>
+      </div>
+      <label for="content">反馈内容</label>
+      <textarea id="content" maxlength="300" required placeholder="请简要描述您的意见或建议"></textarea>
+      <div class="count"><span id="count">0</span>/300</div>
+      <label for="contact">联系方式（选填）</label>
+      <input id="contact" maxlength="60" placeholder="手机号或邮箱">
+      <button class="submit" type="submit">提交反馈</button>
+      <p class="note">我们会认真查看每一条反馈</p>
+    </form>
+    <section class="success" id="success" aria-live="polite">
+      <i>✓</i><h2>感谢您的反馈</h2><p>您的意见已提交，我们会持续改进政策服务体验。</p>
+      <button type="button" id="again">继续反馈</button>
+    </section>
+  </main>
+  <script>
+    const form=document.getElementById('feedbackForm');
+    const content=document.getElementById('content');
+    const count=document.getElementById('count');
+    const success=document.getElementById('success');
+    let type='政策内容';
+    document.querySelectorAll('.type').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.type').forEach(item=>item.classList.remove('active'));button.classList.add('active');type=button.dataset.type}));
+    content.addEventListener('input',()=>count.textContent=content.value.length);
+    form.addEventListener('submit',event=>{event.preventDefault();const records=JSON.parse(localStorage.getItem('policyFeedback')||'[]');records.unshift({type,content:content.value.trim(),contact:document.getElementById('contact').value.trim(),createdAt:new Date().toISOString()});localStorage.setItem('policyFeedback',JSON.stringify(records.slice(0,50)));form.style.display='none';success.classList.add('active');scrollTo(0,0)});
+    document.getElementById('again').addEventListener('click',()=>{form.reset();content.value='';count.textContent='0';success.classList.remove('active');form.style.display='block'});
+  </script>
+</body>
+</html>
