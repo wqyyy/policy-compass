@@ -7,17 +7,20 @@
   <style>
     :root{--blue:#1677e8;--navy:#123b66;--muted:#71869b;--line:#d8e6f1;--soft:#f2f8fd;--green:#15a77a}
     *{box-sizing:border-box}
-    html{background:#f5f9fd}
-    body{margin:0;min-height:100vh;min-height:100dvh;background:linear-gradient(180deg,#eaf5ff 0,#f7fbff 38%,#f5f9fd 100%);color:var(--navy);font-family:"PingFang SC","Microsoft YaHei",sans-serif;-webkit-text-size-adjust:100%}
+    html{background:#eef3f7}
+    body{margin:0;min-height:100vh;min-height:100dvh;background:#eef3f7;color:var(--navy);font-family:"PingFang SC","Microsoft YaHei",sans-serif;-webkit-text-size-adjust:100%}
     button,textarea,input{-webkit-tap-highlight-color:transparent}
-    .page{width:100%;min-height:100vh;min-height:100dvh;margin:0 auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom))}
-    .brand{display:flex;align-items:center;gap:9px;margin-bottom:22px;color:#4d718f;font-size:12px;font-weight:700;letter-spacing:.7px}
+    .topbar{height:calc(64px + env(safe-area-inset-top));padding-top:env(safe-area-inset-top);display:grid;grid-template-columns:52px 1fr 52px;align-items:center;background:#123f6b;color:#fff;box-shadow:0 2px 10px rgba(18,63,107,.12)}
+    .topbar h1{margin:0;text-align:center;color:#fff;font-size:18px;line-height:1;font-weight:800}
+    .back{display:grid;place-items:center;width:44px;height:44px;margin-left:6px;border:0;background:transparent;color:#fff;font-size:34px;font-family:Arial,sans-serif;font-weight:300;line-height:1;cursor:pointer}
+    .page{width:calc(100% - 24px);min-height:calc(100vh - 82px);min-height:calc(100dvh - 82px);margin:14px auto 0;padding:24px 20px calc(28px + env(safe-area-inset-bottom));border-radius:22px 22px 0 0;background:#fff;box-shadow:0 8px 28px rgba(35,75,108,.08)}
+    .brand{display:flex;align-items:center;gap:9px;margin-bottom:18px;color:#4d718f;font-size:12px;font-weight:700;letter-spacing:.7px}
     .brand i{width:9px;height:9px;border-radius:50%;background:#35cfb1;box-shadow:0 0 0 5px rgba(53,207,177,.12)}
     .intro{margin-bottom:18px}
     .intro span{display:inline-block;padding:5px 10px;border-radius:999px;background:#dff0ff;color:var(--blue);font-size:11px;font-weight:800}
     h1{margin:12px 0 8px;font-size:28px;line-height:1.2}
     .intro p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
-    form,.success{padding:18px 16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.96);box-shadow:0 12px 30px rgba(42,99,145,.09)}
+    form,.success{padding:0;border:0;border-radius:0;background:#fff;box-shadow:none}
     label{display:block;margin:0 0 10px;font-size:14px;font-weight:800}
     .types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-bottom:19px}
     .type{min-width:0;height:42px;padding:0 4px;border:1px solid var(--line);border-radius:10px;background:var(--soft);color:#4e6d87;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer}
@@ -32,11 +35,16 @@
     .success{display:none;text-align:center;padding:42px 24px}
     .success.active{display:block}.success i{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 16px;border-radius:50%;background:#e3f8f1;color:var(--green);font-size:28px;font-style:normal;font-weight:900}
     .success h2{margin:0 0 8px}.success p{margin:0;color:var(--muted);line-height:1.7}.success button{margin-top:22px;border:0;background:transparent;color:var(--blue);font-size:14px;font-weight:800;cursor:pointer}
-    @media(min-width:600px){.page{width:560px;padding-top:30px;padding-bottom:48px}.brand{font-size:13px}.intro{margin-bottom:22px}h1{font-size:32px}.intro p{font-size:14px}form,.success{padding:22px;border-radius:20px}.types{gap:9px}.type{font-size:14px}textarea{min-height:140px;resize:vertical}}
-    @media(max-width:360px){.page{padding-left:12px;padding-right:12px}.type{font-size:12px}form,.success{padding-left:13px;padding-right:13px}}
+    @media(min-width:600px){.topbar{grid-template-columns:72px 1fr 72px}.page{width:560px;min-height:auto;margin-top:22px;margin-bottom:40px;padding:30px 28px 38px;border-radius:22px}.brand{font-size:13px}.intro{margin-bottom:22px}h1{font-size:32px}.intro p{font-size:14px}.types{gap:9px}.type{font-size:14px}textarea{min-height:140px;resize:vertical}}
+    @media(max-width:360px){.page{width:calc(100% - 16px);padding-left:14px;padding-right:14px}.type{font-size:12px}}
   </style>
 </head>
 <body>
+  <header class="topbar">
+    <button class="back" type="button" id="backButton" aria-label="返回">‹</button>
+    <h1>意见反馈</h1>
+    <span></span>
+  </header>
   <main class="page">
     <div class="brand"><i></i>北京经开区 · 政策清单服务</div>
     <section class="intro">
@@ -69,6 +77,7 @@
     const content=document.getElementById('content');
     const count=document.getElementById('count');
     const success=document.getElementById('success');
+    document.getElementById('backButton').addEventListener('click',()=>{if(history.length>1){history.back()}else{location.href='./'}});
     let type='政策内容';
     document.querySelectorAll('.type').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.type').forEach(item=>item.classList.remove('active'));button.classList.add('active');type=button.dataset.type}));
     content.addEventListener('input',()=>count.textContent=content.value.length);
