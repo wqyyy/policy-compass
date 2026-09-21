@@ -14,8 +14,6 @@
     .topbar h1{margin:0;text-align:center;color:#fff;font-size:17px;line-height:1;font-weight:800}
     .back{display:grid;place-items:center;width:44px;height:44px;margin-left:6px;border:0;background:transparent;color:#fff;font-size:34px;font-family:Arial,sans-serif;font-weight:300;line-height:1;cursor:pointer}
     .page{width:calc(100% - 24px);max-width:406px;min-height:calc(100vh - 70px);min-height:calc(100dvh - 70px);margin:12px auto 0;padding:22px 18px calc(26px + env(safe-area-inset-bottom));border-radius:20px 20px 0 0;background:#fff;box-shadow:0 8px 28px rgba(35,75,108,.08)}
-    .brand{display:flex;align-items:center;gap:9px;margin-bottom:18px;color:#4d718f;font-size:12px;font-weight:700;letter-spacing:.7px}
-    .brand i{width:9px;height:9px;border-radius:50%;background:#35cfb1;box-shadow:0 0 0 5px rgba(53,207,177,.12)}
     .intro{margin-bottom:18px}
     .intro span{display:inline-block;padding:5px 10px;border-radius:999px;background:#dff0ff;color:var(--blue);font-size:11px;font-weight:800}
     h1{margin:12px 0 8px;font-size:28px;line-height:1.2}
@@ -35,7 +33,7 @@
     .success{display:none;text-align:center;padding:42px 24px}
     .success.active{display:block}.success i{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 16px;border-radius:50%;background:#e3f8f1;color:var(--green);font-size:28px;font-style:normal;font-weight:900}
     .success h2{margin:0 0 8px}.success p{margin:0;color:var(--muted);line-height:1.7}.success button{margin-top:22px;border:0;background:transparent;color:var(--blue);font-size:14px;font-weight:800;cursor:pointer}
-    @media(min-width:600px){body{padding-bottom:32px}.page{min-height:auto;margin-top:12px;border-radius:20px}.brand{font-size:12px}}
+    @media(min-width:600px){body{padding-bottom:32px}.page{min-height:auto;margin-top:12px;border-radius:20px}}
     @media(max-width:360px){.page{width:calc(100% - 16px);padding-left:14px;padding-right:14px}.type{font-size:12px}}
   </style>
 </head>
@@ -46,10 +44,9 @@
     <span></span>
   </header>
   <main class="page">
-    <div class="brand"><i></i>北京经开区 · 政策清单服务</div>
     <section class="intro">
       <span>FEEDBACK</span>
-      <h1>意见反馈</h1>
+      <h1>帮助我们做的更好</h1>
       <p>您的建议将帮助我们持续优化政策清单内容与使用体验。</p>
     </section>
     <form id="feedbackForm">
