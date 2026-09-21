@@ -12,12 +12,11 @@ const icons={
   fusion:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="9" ry="4.5"/><ellipse cx="12" cy="12" rx="4.5" ry="9" transform="rotate(45 12 12)"/><circle cx="20" cy="12" r="1"/></svg>',
   general:'<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>'
 };
-const industries=[['ai','人工智能','#4F7CFF','#F5F7FF'],['chip','集成电路','#725BFF','#F7F5FF'],['health','医药健康','#10A77A','#F3FBF7'],['car','智能网联汽车','#0E79C9','#F3F9FC'],['robot','机器人','#126B85','#F3F9FA'],['terminal','智能终端','#2D6DDF','#F4F8FF'],['space','空天技术','#21417D','#F4F6FA'],['energy','先进能源','#0A9564','#F6FAF1'],['nextit','新一代信息技术','#3B6EDB','#F2F7FF'],['synbio','合成生物制造','#0D9A73','#F1FAF6'],['fusion','聚变能源','#E17A35','#FFF7F0'],['general','通用产业','#5C7896','#F2F6F9']];
+const industries=[['ai','人工智能','#4F7CFF','#F5F7FF'],['chip','集成电路','#725BFF','#F7F5FF'],['health','生物技术和大健康','#10A77A','#F3FBF7'],['car','高端汽车和新能源汽车','#0E79C9','#F3F9FC'],['robot','机器人和智能制造','#126B85','#F3F9FA'],['terminal','智能终端','#2D6DDF','#F4F8FF'],['space','空天技术','#21417D','#F4F6FA'],['energy','先进能源','#0A9564','#F6FAF1'],['nextit','新一代信息技术','#3B6EDB','#F2F7FF'],['synbio','合成生物制造','#0D9A73','#F1FAF6'],['fusion','聚变能源','#E17A35','#FFF7F0'],['general','通用产业','#5C7896','#F2F6F9']];
 const industryGroups=[
-  {code:'1',title:'核心牵引产业',ids:['ai']},
-  {code:'3',title:'优势主导产业',ids:['chip','health','car']},
-  {code:'4',title:'新兴支柱产业',ids:['robot','terminal','space','energy']},
-  {code:'N',title:'未来产业',ids:['nextit','synbio','fusion']},
+  {code:'2',title:'两大国家战略产业',ids:['ai','chip']},
+  {code:'4',title:'四大主导产业',ids:['car','nextit','health','robot']},
+  {code:'N',title:'一批未来产业',ids:['synbio','fusion']},
   {code:'通',title:'通用产业',ids:['general']}
 ];
 const policies=[['国家级','高新技术企业认定及税收优惠政策','企业所得税减按 15% 税率征收，研发费用可按规定加计扣除。',96,'长期有效'],['北京市','北京市科技型中小企业技术创新资金','支持企业开展关键核心技术攻关和科技成果转化，单项最高支持 500 万元。',92,'2026.09.30'],['区级','高层次科技人才引进与培养支持办法','为符合条件的高层次人才提供奖励、住房及团队建设支持。',88,'滚动申报'],['北京市','首台（套）重大技术装备示范应用项目','支持创新产品首试首用，按项目实际投入给予一定比例补助。',85,'2026.10.18']];
