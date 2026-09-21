@@ -70,6 +70,17 @@ body {
 .hero-platform {
   justify-content: center;
 }
+.hero-platform-qr {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+}
+.hero-platform-qr canvas,
+.hero-platform-qr img {
+  display: block;
+  width: 52px !important;
+  height: 52px !important;
+}
 .hero-platform .report-interactive-link {
   width: 100%;
   min-height: 54px;
@@ -78,6 +89,7 @@ body {
   font-size: 11px;
 }
 .hero-platform > img,
+.hero-platform > .hero-platform-qr,
 .hero-platform > span {
   display: none;
 }
@@ -125,6 +137,9 @@ html.is-exporting .hero-platform {
   justify-content: flex-start;
 }
 html.is-exporting .hero-platform > img {
+  display: block;
+}
+html.is-exporting .hero-platform > .hero-platform-qr {
   display: block;
 }
 html.is-exporting .hero-platform > span {

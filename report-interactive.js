@@ -1,12 +1,35 @@
 (function () {
-  const platformLinks = new Map([
+  const platforms = [
     ['北京经开区政策兑现综合服务平台', 'https://zcdx.kfqgw.beijing.gov.cn/#/home'],
-    ['北京小微企业金融综合服务平台', 'https://www.smeservice.com/'],
-    ['北京市信用政务服务平台', 'https://creditbj.jxj.beijing.gov.cn/'],
-    ['北京市科技计划综合管理平台', 'https://mis.kw.beijing.gov.cn/'],
-    ['科学技术部政务服务平台', 'https://fuwu.most.gov.cn/'],
-    ['国家科技管理信息系统公共服务平台', 'https://service.most.gov.cn/']
-  ])
+    ['北京市政策服务平台（京策）', 'https://www.beijing.gov.cn/zhengce/'],
+    ['国家政务服务平台', 'https://gjzwfw.www.gov.cn/index.html']
+  ]
+  const platformLinks = new Map(platforms)
+
+  const platformRoot = document.querySelector('.hero-platforms')
+  if (platformRoot) {
+    platformRoot.replaceChildren(...platforms.map(([name, href]) => {
+      const card = document.createElement('div')
+      card.className = 'hero-platform'
+      const qr = document.createElement('div')
+      qr.className = 'hero-platform-qr'
+      qr.dataset.url = href
+      const label = document.createElement('span')
+      label.textContent = name
+      card.append(qr, label)
+      if (typeof QRCode === 'function') {
+        new QRCode(qr, {
+          text: href,
+          width: 52,
+          height: 52,
+          colorDark: '#0c3156',
+          colorLight: '#fff',
+          correctLevel: QRCode.CorrectLevel.M
+        })
+      }
+      return card
+    }))
+  }
 
   function safeUrl(value) {
     const raw = String(value || '').trim()
