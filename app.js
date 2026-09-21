@@ -7,16 +7,16 @@ const icons={
   terminal:'<svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M9 5h6m-4 14h2M8 9h8v6H8z"/></svg>',
   space:'<svg viewBox="0 0 24 24"><path d="M14 4c3 1 5 3 6 6l-5 5-6-6zM9 9l-4 2-2 4 6-1m6 1-1 6 4-2 2-4"/><path d="m7 17-3 3m6-2-2 3"/></svg>',
   energy:'<svg viewBox="0 0 24 24"><path d="M13 2 5 14h6l-1 8 9-13h-6z"/></svg>',
-  embodied:'<svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><path d="M8 21v-5l-3-3 2-3 3 2h4l3-2 2 3-3 3v5m-8-5h8"/></svg>',
-  brain:'<svg viewBox="0 0 24 24"><path d="M12 5a4 4 0 0 0-7 3 4 4 0 0 0 0 7 4 4 0 0 0 7 3V5Zm0 0a4 4 0 0 1 7 3 4 4 0 0 1 0 7 4 4 0 0 1-7 3"/><path d="M8 8v8m8-8v8M5 12h3m8 0h3"/></svg>',
-  life:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c1-5 3-7 7-7s6 2 7 7M3 5h3M18 5h3M12 1v3"/></svg>'
+  nextit:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="6" r="1.8"/><circle cx="19" cy="6" r="1.8"/><circle cx="5" cy="18" r="1.8"/><circle cx="19" cy="18" r="1.8"/><path d="m7 7.5 3 2.7m4 0 3-2.7m-7 6.3-3 2.7m7-2.7 3 2.7M12 3v4m0 10v4"/></svg>',
+  synbio:'<svg viewBox="0 0 24 24"><path d="M8 3c7 4 1 14 8 18M16 3C9 7 15 17 8 21M9 7h6m-7 5h8m-7 5h6"/><path d="M18 8c2-2 3-1 3 1s-1 4-4 5"/></svg>',
+  fusion:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="9" ry="4.5"/><ellipse cx="12" cy="12" rx="4.5" ry="9" transform="rotate(45 12 12)"/><circle cx="20" cy="12" r="1"/></svg>'
 };
-const industries=[['ai','人工智能','#4F7CFF','#F5F7FF'],['chip','集成电路','#725BFF','#F7F5FF'],['health','医药健康','#10A77A','#F3FBF7'],['car','智能网联汽车','#0E79C9','#F3F9FC'],['robot','机器人','#126B85','#F3F9FA'],['terminal','智能终端','#2D6DDF','#F4F8FF'],['space','空天技术','#21417D','#F4F6FA'],['energy','先进能源','#0A9564','#F6FAF1'],['embodied','具身智能','#4956D8','#F5F5FF'],['brain','脑机接口','#8D4FDB','#FAF5FC'],['life','数字生命','#A13F92','#FCF4FA']];
+const industries=[['ai','人工智能','#4F7CFF','#F5F7FF'],['chip','集成电路','#725BFF','#F7F5FF'],['health','医药健康','#10A77A','#F3FBF7'],['car','智能网联汽车','#0E79C9','#F3F9FC'],['robot','机器人','#126B85','#F3F9FA'],['terminal','智能终端','#2D6DDF','#F4F8FF'],['space','空天技术','#21417D','#F4F6FA'],['energy','先进能源','#0A9564','#F6FAF1'],['nextit','新一代信息技术','#3B6EDB','#F2F7FF'],['synbio','合成生物制造','#0D9A73','#F1FAF6'],['fusion','聚变能源','#E17A35','#FFF7F0']];
 const industryGroups=[
   {code:'1',title:'核心牵引产业',ids:['ai']},
   {code:'3',title:'优势主导产业',ids:['chip','health','car']},
   {code:'4',title:'新兴支柱产业',ids:['robot','terminal','space','energy']},
-  {code:'N',title:'未来产业',ids:['embodied','brain','life']}
+  {code:'N',title:'未来产业',ids:['nextit','synbio','fusion']}
 ];
 const policies=[['国家级','高新技术企业认定及税收优惠政策','企业所得税减按 15% 税率征收，研发费用可按规定加计扣除。',96,'长期有效'],['北京市','北京市科技型中小企业技术创新资金','支持企业开展关键核心技术攻关和科技成果转化，单项最高支持 500 万元。',92,'2026.09.30'],['区级','高层次科技人才引进与培养支持办法','为符合条件的高层次人才提供奖励、住房及团队建设支持。',88,'滚动申报'],['北京市','首台（套）重大技术装备示范应用项目','支持创新产品首试首用，按项目实际投入给予一定比例补助。',85,'2026.10.18']];
 const enterpriseLibrary=[
@@ -30,7 +30,8 @@ const enterpriseLibrary=[
   {name:'北京经开智能终端科技有限公司',industry:'智能终端'}
 ];
 const $=s=>document.querySelector(s),selected=new Set();
-let reports=JSON.parse(localStorage.getItem('policyReportsH5')||'[]').map(r=>({...r,status:r.status==='generating'&&r.readyAt&&Date.now()>=r.readyAt?'completed':r.status||'completed',companyName:r.companyName||'企业名称'})),currentReport=null,detailFrom='home',generationInterval=null,generationTimeout=null,subjectType='personal',wechatIdentity=JSON.parse(localStorage.getItem('policyWechatIdentityH5')||'null'),selectedEnterprise='';
+const legacyIndustryIds={embodied:'nextit',brain:'synbio',life:'fusion'};
+let reports=JSON.parse(localStorage.getItem('policyReportsH5')||'[]').map(r=>({...r,industries:(r.industries||[]).map(id=>legacyIndustryIds[id]||id),status:r.status==='generating'&&r.readyAt&&Date.now()>=r.readyAt?'completed':r.status||'completed',companyName:r.companyName||'企业名称'})),currentReport=null,detailFrom='home',generationInterval=null,generationTimeout=null,subjectType='personal',wechatIdentity=JSON.parse(localStorage.getItem('policyWechatIdentityH5')||'null'),selectedEnterprise='';
 wechatIdentity={...(wechatIdentity||{}),nickname:'🌛',openid:wechatIdentity?.openid||`preview_${Date.now()}`};localStorage.setItem('policyWechatIdentityH5',JSON.stringify(wechatIdentity));
 const getIndustry=id=>industries.find(i=>i[0]===id);
 const show=id=>{document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$('#'+id).classList.add('active');scrollTo(0,0);if(id==='detail')requestAnimationFrame(resizeReportFrame)};
