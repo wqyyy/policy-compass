@@ -17,7 +17,7 @@ const industryGroups=[
   {code:'2',title:'两大国家战略产业',ids:['ai','chip']},
   {code:'4',title:'四大主导产业',ids:['car','nextit','health','robot']},
   {code:'1',title:'一批未来产业',ids:['synbio','fusion','terminal','space','energy']},
-  {code:'通',title:'通用产业',ids:['general']}
+  {code:'',title:'没有找到所属产业？',ids:['general'],fallback:true}
 ];
 const policies=[['国家级','高新技术企业认定及税收优惠政策','企业所得税减按 15% 税率征收，研发费用可按规定加计扣除。',96,'长期有效'],['北京市','北京市科技型中小企业技术创新资金','支持企业开展关键核心技术攻关和科技成果转化，单项最高支持 500 万元。',92,'2026.09.30'],['区级','高层次科技人才引进与培养支持办法','为符合条件的高层次人才提供奖励、住房及团队建设支持。',88,'滚动申报'],['北京市','首台（套）重大技术装备示范应用项目','支持创新产品首试首用，按项目实际投入给予一定比例补助。',85,'2026.10.18']];
 const enterpriseLibrary=[
@@ -39,7 +39,9 @@ const industryReportTitle=name=>name.endsWith('产业')?`${name}政策清单`:`$
 const show=id=>{document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$('#'+id).classList.add('active');scrollTo(0,0);if(id==='detail')requestAnimationFrame(resizeReportFrame)};
 const statusMap={completed:'已完成',generating:'生成中',failed:'失败'};
 const escapeHtml=value=>String(value).replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
-$('#industries').innerHTML=industryGroups.map(group=>`<section class="industry-group"><div class="industry-group-head"><span>${group.code}</span><b>${group.title}</b></div><div class="industry-group-grid">${group.ids.map(id=>{const i=getIndustry(id);return `<article class="industry" data-id="${i[0]}" style="--theme:${i[2]};--soft:${i[3]}"><div class="icon">${icons[i[0]]}</div><h3>${i[1]}</h3><span class="check">✓</span></article>`}).join('')}</div></section>`).join('');
+$('#industries').innerHTML=industryGroups.map(group=>group.fallback
+  ? `<section class="industry-group industry-fallback"><div class="fallback-head"><b>${group.title}</b><small>若企业不属于以上产业，可选择下方选项</small></div><div class="industry-group-grid fallback-grid">${group.ids.map(id=>{const i=getIndustry(id);return `<article class="industry fallback-option" data-id="${i[0]}" style="--theme:${i[2]};--soft:${i[3]}"><div class="icon">${icons[i[0]]}</div><div class="fallback-copy"><h3>以上均不属于</h3><p>选择后将按通用产业政策为您匹配</p></div><span class="check">✓</span></article>`}).join('')}</div></section>`
+  : `<section class="industry-group"><div class="industry-group-head"><span>${group.code}</span><b>${group.title}</b></div><div class="industry-group-grid">${group.ids.map(id=>{const i=getIndustry(id);return `<article class="industry" data-id="${i[0]}" style="--theme:${i[2]};--soft:${i[3]}"><div class="icon">${icons[i[0]]}</div><h3>${i[1]}</h3><span class="check">✓</span></article>`}).join('')}</div></section>`).join('');
 const updateGenerateState=()=>{const hasIdentity=subjectType==='personal'?Boolean(wechatIdentity):Boolean(selectedEnterprise.trim()),ready=hasIdentity&&selected.size>0;$('#generate').disabled=!ready;$('#generate').textContent=!hasIdentity?(subjectType==='personal'?'请先获取微信信息':'请输入企业名称'):!selected.size?'请至少选择一个产业':'生成专属政策清单 →'};
 const renderIdentity=()=>{document.querySelectorAll('[data-subject]').forEach(button=>button.classList.toggle('active',button.dataset.subject===subjectType));$('#personalIdentity').classList.toggle('is-hidden',subjectType!=='personal');$('#enterpriseIdentity').classList.toggle('is-hidden',subjectType!=='enterprise');$('#wechatAccount').classList.toggle('is-hidden',!wechatIdentity);$('#authorizeWechat').classList.toggle('is-hidden',Boolean(wechatIdentity));if(wechatIdentity){$('#wechatNickname').textContent=wechatIdentity.nickname||'';$('#wechatNickname').hidden=!wechatIdentity.nickname}updateGenerateState()};
 document.querySelectorAll('[data-subject]').forEach(button=>button.onclick=()=>{subjectType=button.dataset.subject;$('#enterpriseResults').classList.add('is-hidden');renderIdentity()});
