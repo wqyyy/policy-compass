@@ -2,7 +2,8 @@
   const platforms = [
     ['北京经开区政策兑现综合服务平台', 'https://zcdx.kfqgw.beijing.gov.cn/#/home'],
     ['北京市政策服务平台（京策）', 'https://www.beijing.gov.cn/zhengce/'],
-    ['国家政务服务平台', 'https://gjzwfw.www.gov.cn/index.html']
+    ['国家政务服务平台', 'https://gjzwfw.www.gov.cn/index.html'],
+    ['民营经济发展综合服务平台', 'https://myjj.ndrc.gov.cn/hqzczd/']
   ]
   const platformLinks = new Map(platforms)
 

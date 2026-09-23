@@ -67,6 +67,10 @@ body {
 }
 
 /* 封面平台入口 */
+.hero-platforms {
+  grid-template-columns: repeat(2, 300px);
+  width: 610px;
+}
 .hero-platform {
   justify-content: center;
 }
@@ -86,7 +90,7 @@ body {
   min-height: 54px;
   padding: 9px 11px;
   text-align: center;
-  font-size: 11px;
+  font-size: 12px;
 }
 .hero-platform > img,
 .hero-platform > .hero-platform-qr,
