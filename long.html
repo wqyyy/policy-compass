@@ -663,16 +663,19 @@ body{background:#dce9f2}.poster{padding:28px 0 0;background:linear-gradient(180d
   const params=new URLSearchParams(location.search);
   const subjectType=params.get('subjectType')||'personal';
   const companyName=(params.get('companyName')||'').trim();
+  const reportName=(params.get('reportName')||'政策清单').trim();
   const coverName=companyName||(subjectType==='enterprise'?'企业名称':'🌛');
   const coverTitle=poster.querySelector('.hero h1');
+  const coverNote=poster.querySelector('.hero-note');
   const coverStamp=poster.querySelector('.stamp b');
   if(coverTitle&&subjectType==='enterprise'){
     const nameLine=document.createElement('span');nameLine.className='cover-company-name';nameLine.textContent=coverName;
-    const reportLine=document.createElement('span');reportLine.className='cover-report-title';reportLine.textContent='政策清单';
+    const reportLine=document.createElement('span');reportLine.className='cover-report-title';reportLine.textContent=reportName;
     coverTitle.replaceChildren(nameLine,reportLine);coverTitle.classList.add('enterprise-title');
-  }else if(coverTitle){coverTitle.firstChild.textContent=coverName+'-';}
-  if(coverStamp)coverStamp.textContent=coverName+'-政策清单';
-  document.title=coverName+'-政策清单 · 逻辑分页版';
+  }else if(coverTitle){coverTitle.firstChild.textContent=coverName+'-';const titleSpan=coverTitle.querySelector('span');if(titleSpan)titleSpan.textContent=reportName;}
+  if(coverNote&&reportName==='企业通用政策清单')coverNote.textContent='汇总不限定产业的企业扶持政策，方便您查阅。';
+  if(coverStamp)coverStamp.textContent=coverName+'-'+reportName;
+  document.title=coverName+'-'+reportName+' · 逻辑分页版';
   const original=[...poster.children];
   if(original.length<6)return;
   const [hero,tocSection,overviewSection,policySection,itemSection,footer]=original;
